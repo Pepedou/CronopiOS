@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42297361DC9845C002FD0AE /* AppDelegate.swift */; };
+		B42297391DC9845C002FD0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42297381DC9845C002FD0AE /* ViewController.swift */; };
+		B422973C1DC9845C002FD0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B422973A1DC9845C002FD0AE /* Main.storyboard */; };
+		B422973E1DC9845C002FD0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B422973D1DC9845C002FD0AE /* Assets.xcassets */; };
+		B42297411DC9845C002FD0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */; };
+		B422974C1DC9845C002FD0AE /* CronopiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B422974B1DC9845C002FD0AE /* CronopiOSTests.swift */; };
+		B42297571DC9845C002FD0AE /* CronopiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42297561DC9845C002FD0AE /* CronopiOSUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B42297481DC9845C002FD0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B422972B1DC9845C002FD0AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B42297321DC9845C002FD0AE;
+			remoteInfo = CronopiOS;
+		};
+		B42297531DC9845C002FD0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B422972B1DC9845C002FD0AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B42297321DC9845C002FD0AE;
+			remoteInfo = CronopiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B42297331DC9845C002FD0AE /* CronopiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CronopiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B42297361DC9845C002FD0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B42297381DC9845C002FD0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B422973B1DC9845C002FD0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B422973D1DC9845C002FD0AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B42297401DC9845C002FD0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B42297421DC9845C002FD0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42297471DC9845C002FD0AE /* CronopiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CronopiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B422974B1DC9845C002FD0AE /* CronopiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronopiOSTests.swift; sourceTree = "<group>"; };
+		B422974D1DC9845C002FD0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42297521DC9845C002FD0AE /* CronopiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CronopiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B42297561DC9845C002FD0AE /* CronopiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronopiOSUITests.swift; sourceTree = "<group>"; };
+		B42297581DC9845C002FD0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B42297301DC9845C002FD0AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B42297441DC9845C002FD0AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B422974F1DC9845C002FD0AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B422972A1DC9845C002FD0AE = {
+			isa = PBXGroup;
+			children = (
+				B42297351DC9845C002FD0AE /* CronopiOS */,
+				B422974A1DC9845C002FD0AE /* CronopiOSTests */,
+				B42297551DC9845C002FD0AE /* CronopiOSUITests */,
+				B42297341DC9845C002FD0AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B42297341DC9845C002FD0AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B42297331DC9845C002FD0AE /* CronopiOS.app */,
+				B42297471DC9845C002FD0AE /* CronopiOSTests.xctest */,
+				B42297521DC9845C002FD0AE /* CronopiOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B42297351DC9845C002FD0AE /* CronopiOS */ = {
+			isa = PBXGroup;
+			children = (
+				B42297361DC9845C002FD0AE /* AppDelegate.swift */,
+				B42297381DC9845C002FD0AE /* ViewController.swift */,
+				B422973A1DC9845C002FD0AE /* Main.storyboard */,
+				B422973D1DC9845C002FD0AE /* Assets.xcassets */,
+				B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */,
+				B42297421DC9845C002FD0AE /* Info.plist */,
+			);
+			path = CronopiOS;
+			sourceTree = "<group>";
+		};
+		B422974A1DC9845C002FD0AE /* CronopiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				B422974B1DC9845C002FD0AE /* CronopiOSTests.swift */,
+				B422974D1DC9845C002FD0AE /* Info.plist */,
+			);
+			path = CronopiOSTests;
+			sourceTree = "<group>";
+		};
+		B42297551DC9845C002FD0AE /* CronopiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B42297561DC9845C002FD0AE /* CronopiOSUITests.swift */,
+				B42297581DC9845C002FD0AE /* Info.plist */,
+			);
+			path = CronopiOSUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B42297321DC9845C002FD0AE /* CronopiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B422975B1DC9845C002FD0AE /* Build configuration list for PBXNativeTarget "CronopiOS" */;
+			buildPhases = (
+				B422972F1DC9845C002FD0AE /* Sources */,
+				B42297301DC9845C002FD0AE /* Frameworks */,
+				B42297311DC9845C002FD0AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CronopiOS;
+			productName = CronopiOS;
+			productReference = B42297331DC9845C002FD0AE /* CronopiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B42297461DC9845C002FD0AE /* CronopiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B422975E1DC9845C002FD0AE /* Build configuration list for PBXNativeTarget "CronopiOSTests" */;
+			buildPhases = (
+				B42297431DC9845C002FD0AE /* Sources */,
+				B42297441DC9845C002FD0AE /* Frameworks */,
+				B42297451DC9845C002FD0AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B42297491DC9845C002FD0AE /* PBXTargetDependency */,
+			);
+			name = CronopiOSTests;
+			productName = CronopiOSTests;
+			productReference = B42297471DC9845C002FD0AE /* CronopiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B42297511DC9845C002FD0AE /* CronopiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B42297611DC9845C002FD0AE /* Build configuration list for PBXNativeTarget "CronopiOSUITests" */;
+			buildPhases = (
+				B422974E1DC9845C002FD0AE /* Sources */,
+				B422974F1DC9845C002FD0AE /* Frameworks */,
+				B42297501DC9845C002FD0AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B42297541DC9845C002FD0AE /* PBXTargetDependency */,
+			);
+			name = CronopiOSUITests;
+			productName = CronopiOSUITests;
+			productReference = B42297521DC9845C002FD0AE /* CronopiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B422972B1DC9845C002FD0AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "José Luis Valencia Herrera";
+				TargetAttributes = {
+					B42297321DC9845C002FD0AE = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = UFT4YM3Y7F;
+						ProvisioningStyle = Automatic;
+					};
+					B42297461DC9845C002FD0AE = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = UFT4YM3Y7F;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B42297321DC9845C002FD0AE;
+					};
+					B42297511DC9845C002FD0AE = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = UFT4YM3Y7F;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B42297321DC9845C002FD0AE;
+					};
+				};
+			};
+			buildConfigurationList = B422972E1DC9845C002FD0AE /* Build configuration list for PBXProject "CronopiOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B422972A1DC9845C002FD0AE;
+			productRefGroup = B42297341DC9845C002FD0AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B42297321DC9845C002FD0AE /* CronopiOS */,
+				B42297461DC9845C002FD0AE /* CronopiOSTests */,
+				B42297511DC9845C002FD0AE /* CronopiOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B42297311DC9845C002FD0AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B42297411DC9845C002FD0AE /* LaunchScreen.storyboard in Resources */,
+				B422973E1DC9845C002FD0AE /* Assets.xcassets in Resources */,
+				B422973C1DC9845C002FD0AE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B42297451DC9845C002FD0AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B42297501DC9845C002FD0AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B422972F1DC9845C002FD0AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B42297391DC9845C002FD0AE /* ViewController.swift in Sources */,
+				B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B42297431DC9845C002FD0AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B422974C1DC9845C002FD0AE /* CronopiOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B422974E1DC9845C002FD0AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B42297571DC9845C002FD0AE /* CronopiOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B42297491DC9845C002FD0AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B42297321DC9845C002FD0AE /* CronopiOS */;
+			targetProxy = B42297481DC9845C002FD0AE /* PBXContainerItemProxy */;
+		};
+		B42297541DC9845C002FD0AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B42297321DC9845C002FD0AE /* CronopiOS */;
+			targetProxy = B42297531DC9845C002FD0AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B422973A1DC9845C002FD0AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B422973B1DC9845C002FD0AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B42297401DC9845C002FD0AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B42297591DC9845C002FD0AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B422975A1DC9845C002FD0AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B422975C1DC9845C002FD0AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UFT4YM3Y7F;
+				INFOPLIST_FILE = CronopiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valencia.jose.CronopiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B422975D1DC9845C002FD0AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UFT4YM3Y7F;
+				INFOPLIST_FILE = CronopiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valencia.jose.CronopiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B422975F1DC9845C002FD0AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UFT4YM3Y7F;
+				INFOPLIST_FILE = CronopiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valencia.jose.CronopiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CronopiOS.app/CronopiOS";
+			};
+			name = Debug;
+		};
+		B42297601DC9845C002FD0AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UFT4YM3Y7F;
+				INFOPLIST_FILE = CronopiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valencia.jose.CronopiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CronopiOS.app/CronopiOS";
+			};
+			name = Release;
+		};
+		B42297621DC9845C002FD0AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UFT4YM3Y7F;
+				INFOPLIST_FILE = CronopiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valencia.jose.CronopiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CronopiOS;
+			};
+			name = Debug;
+		};
+		B42297631DC9845C002FD0AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UFT4YM3Y7F;
+				INFOPLIST_FILE = CronopiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valencia.jose.CronopiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CronopiOS;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B422972E1DC9845C002FD0AE /* Build configuration list for PBXProject "CronopiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B42297591DC9845C002FD0AE /* Debug */,
+				B422975A1DC9845C002FD0AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B422975B1DC9845C002FD0AE /* Build configuration list for PBXNativeTarget "CronopiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B422975C1DC9845C002FD0AE /* Debug */,
+				B422975D1DC9845C002FD0AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B422975E1DC9845C002FD0AE /* Build configuration list for PBXNativeTarget "CronopiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B422975F1DC9845C002FD0AE /* Debug */,
+				B42297601DC9845C002FD0AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B42297611DC9845C002FD0AE /* Build configuration list for PBXNativeTarget "CronopiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B42297621DC9845C002FD0AE /* Debug */,
+				B42297631DC9845C002FD0AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B422972B1DC9845C002FD0AE /* Project object */;
+}
