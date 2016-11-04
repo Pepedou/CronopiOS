@@ -36,7 +36,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             imagePicker.sourceType = .camera
             imagePicker.cameraCaptureMode = .photo
             imagePicker.allowsEditing = false
-            imagePicker.cameraDevice = .front
+            imagePicker.cameraDevice = .rear
             
             let screenSize = UIScreen.main.bounds.size
             
@@ -59,7 +59,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.myRect = CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight)
             
             let overlayView = OverlayView(frame: self.myRect)
-            let imageView = overlayView.getImageView()
             imagePicker.cameraOverlayView = overlayView
         }
         else {
@@ -74,21 +73,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imagePicker.dismiss(animated: true, completion: nil)
         var chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         let overlayImage = UIImage(named: "Test")
-        self.imageView.contentMode = .scaleAspectFit
         
-        let targetSize = self.cameraFrame.size
-        let targetRect = self.cameraFrame
+        let targetSize = (chosenImage?.size)!
+        let targetRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width, height: targetSize.height)
+        let overlayRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width / 2.0, height: targetSize.height)
         
-        let cameraAspectRatio = CGFloat(667.0 / 375.0)
-        
-        let imageHeight = CGFloat(targetSize.width * CGFloat(4.0/3.0))
-        let verticalAdjustment = CGFloat((targetSize.height - imageHeight) / 2.0)
-        
-        let asdf = CGRect(x: 0.0, y: 0.0, width: targetSize.width, height: CGFloat(500.0))
-        
-        let overlayRect = CGRect(x: targetRect.origin.x, y: targetRect.origin.y + verticalAdjustment, width: targetSize.width / 2.0, height: CGFloat(500.0))
-        
-        let croppedImage = self.cropImage(imageToCrop: overlayImage!, rect: CGRect(x: 0.0, y: targetRect.origin.y + verticalAdjustment, width: targetSize.width / 2.0, height: targetSize.width * cameraAspectRatio), fullRect: asdf)
+        let croppedImage = self.cropImage(imageToCrop: overlayImage!, rect: overlayRect, fullRect: targetRect)
         
         UIGraphicsBeginImageContext(targetSize)
         
@@ -110,8 +100,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         UIGraphicsEndImageContext()
         
+        self.imageView.contentMode = .scaleAspectFit
         self.imageView.image = renderedImage
-        
         dismiss(animated: true, completion: nil)
     }
     
