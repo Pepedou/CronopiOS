@@ -12,36 +12,19 @@ import UIKit
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
-    var imagePicker: UIImagePickerController!
-    var cameraFrame = CGRect()
-    var myRect = CGRect()
-    var imageHeight = CGFloat()
+    var overlayImage: UIImage?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func takePhoto(_ sender: UIButton) {
-        imagePicker = UIImagePickerController()
+        let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            debugPrint("Device has a camera.")
             imagePicker.sourceType = .camera
             imagePicker.cameraCaptureMode = .photo
-            imagePicker.allowsEditing = false
             imagePicker.cameraDevice = .rear
             
             let screenSize = UIScreen.main.bounds.size
-            
             let cameraAspectRatio = CGFloat(4.0 / 3.0)
-            
             let imageHeight = CGFloat(screenSize.width * cameraAspectRatio)
             var verticalAdjustment = CGFloat()
             
@@ -54,54 +37,82 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let cameraFrame = imagePicker.view.frame
             let cameraOrigin = imagePicker.view.frame.origin
             
+            let overlayView = OverlayView(frame: CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight))
 
-            self.cameraFrame = cameraFrame
-            self.myRect = CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight)
+            if (self.overlayImage != nil) {
+                overlayView.setImage(image: self.overlayImage!)
+            }
             
-            let overlayView = OverlayView(frame: self.myRect)
             imagePicker.cameraOverlayView = overlayView
+            
+            present(imagePicker, animated: true, completion: nil)
         }
         else {
-            debugPrint("Device does not have a camera.")
-            imagePicker.sourceType = .photoLibrary
+            let alert = UIAlertController(title: "¡Ups!", message: "El dispositivo no cuenta con cámara.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func selectMask(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         
-        present(imagePicker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            
+            present(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "¡Ups!", message: "No se puede acceder a la biblioteca de fotos.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        var chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let overlayImage = UIImage(named: "Test")
+        picker.dismiss(animated: true, completion: nil)
         
-        let targetSize = (chosenImage?.size)!
-        let targetRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width, height: targetSize.height)
-        let overlayRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width / 2.0, height: targetSize.height)
-        
-        let croppedImage = self.cropImage(imageToCrop: overlayImage!, rect: overlayRect, fullRect: targetRect)
-        
-        UIGraphicsBeginImageContext(targetSize)
-        
-        let context = UIGraphicsGetCurrentContext()
-        
-        UIGraphicsPushContext(context!)
-        
-        if picker.cameraDevice == .front
+        if picker.sourceType == .camera
         {
-            chosenImage = UIImage(cgImage: (chosenImage?.cgImage)!, scale: 1.0, orientation: .leftMirrored)
+            var chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            let overlayImage = self.imageView.image
+            
+            let targetSize = (chosenImage?.size)!
+            let targetRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width, height: targetSize.height)
+            let overlayRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width / 2.0, height: targetSize.height)
+            
+            let croppedImage = self.cropImage(imageToCrop: overlayImage!, rect: overlayRect, fullRect: targetRect)
+            
+            UIGraphicsBeginImageContext(targetSize)
+            
+            let context = UIGraphicsGetCurrentContext()
+            
+            UIGraphicsPushContext(context!)
+            
+            if picker.cameraDevice == .front
+            {
+                chosenImage = UIImage(cgImage: (chosenImage?.cgImage)!, scale: 1.0, orientation: .leftMirrored)
+            }
+            
+            chosenImage?.draw(in: targetRect)
+            croppedImage?.draw(in: overlayRect)
+            
+            UIGraphicsPopContext()
+            
+            let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            UIGraphicsEndImageContext()
+            
+            self.imageView.image = renderedImage
+        }
+        else
+        {
+            self.overlayImage = info[UIImagePickerControllerEditedImage] as? UIImage
+            self.imageView.image = self.overlayImage
         }
         
-        chosenImage?.draw(in: targetRect)
-        croppedImage?.draw(in: overlayRect)
-        
-        UIGraphicsPopContext()
-        
-        let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        self.imageView.contentMode = .scaleAspectFit
-        self.imageView.image = renderedImage
         dismiss(animated: true, completion: nil)
     }
     

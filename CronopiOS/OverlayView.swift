@@ -32,7 +32,7 @@ public class OverlayView: UIView {
         self.imageView.layer.contentsRect = CGRect(x: 0.0, y: 0.0, width: 0.5, height: 1.0)
     }
     
-    func getImageView() -> UIImageView{
-        return self.imageView
+    func setImage(image: UIImage) {
+        self.imageView.image = image
     }
 }
