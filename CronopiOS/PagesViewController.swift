@@ -9,22 +9,20 @@
 import UIKit
 
 class PagesViewController: UIPageViewController {
+    var bookPages: [BookPage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        for i in 0...9 {
+            bookPages.append(BookPage(pageNumber: i, pageTitle: "Capítulo \(i + 1)", pageContent: "Hola amigo", pageImage: UIImage()))
         }
-    }
-    
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newViewController(identifier: "SinglePageViewController"),
-                self.newViewController(identifier:"TestController")]
-    }()
-    
-    private func newViewController(identifier: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+        
+        let singlePageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePageViewController") as? SinglePageViewController
+        singlePageVC?.bookPage = bookPages.first
+        
+        setViewControllers([singlePageVC!], direction: .forward, animated: true, completion: nil)
     }
 }
 
@@ -32,40 +30,31 @@ extension PagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+        let singlePageVC = viewController as! SinglePageViewController
+        let currentPageNumber = singlePageVC.bookPage.pageNumber
+        
+        guard currentPageNumber > 0 else {
             return nil
         }
         
-        let previousIndex = viewControllerIndex - 1
+        let previousPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePageViewController") as? SinglePageViewController
+        previousPageViewController?.bookPage = self.bookPages[currentPageNumber - 1]
         
-        guard previousIndex >= 0 else {
-            return nil
-        }
-        
-        guard orderedViewControllers.count > previousIndex else {
-            return nil
-        }
-        
-        return orderedViewControllers[previousIndex]
+        return previousPageViewController
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+        let singlePageVC = viewController as! SinglePageViewController
+        let currentPageNumber = singlePageVC.bookPage.pageNumber
+        
+        guard currentPageNumber < 9 else {
             return nil
         }
         
-        let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = orderedViewControllers.count
+        let nextPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePageViewController") as? SinglePageViewController
+        nextPageViewController?.bookPage = self.bookPages[currentPageNumber + 1]
         
-        guard orderedViewControllersCount != nextIndex else {
-            return nil
-        }
-        
-        guard orderedViewControllersCount > nextIndex else {
-            return nil
-        }
-        
-        return orderedViewControllers[nextIndex]
+        return nextPageViewController
     }
 }
