@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42297361DC9845C002FD0AE /* AppDelegate.swift */; };
-		B42297391DC9845C002FD0AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42297381DC9845C002FD0AE /* ViewController.swift */; };
+		B42297391DC9845C002FD0AE /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42297381DC9845C002FD0AE /* SinglePageViewController.swift */; };
 		B422973C1DC9845C002FD0AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B422973A1DC9845C002FD0AE /* Main.storyboard */; };
 		B422973E1DC9845C002FD0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B422973D1DC9845C002FD0AE /* Assets.xcassets */; };
 		B42297411DC9845C002FD0AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */; };
 		B422974C1DC9845C002FD0AE /* CronopiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B422974B1DC9845C002FD0AE /* CronopiOSTests.swift */; };
 		B42297571DC9845C002FD0AE /* CronopiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42297561DC9845C002FD0AE /* CronopiOSUITests.swift */; };
-		B4247B6B1DCD6629008CD33C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4247B6A1DCD6629008CD33C /* PageViewController.swift */; };
+		B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4247B6A1DCD6629008CD33C /* PagesViewController.swift */; };
+		B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4247B6C1DCD7CC2008CD33C /* PageView.xib */; };
 		B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2493D1DCBABD40020E105 /* OverlayView.xib */; };
 		B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2493F1DCBABF70020E105 /* OverlayView.swift */; };
 /* End PBXBuildFile section */
@@ -39,7 +40,7 @@
 /* Begin PBXFileReference section */
 		B42297331DC9845C002FD0AE /* CronopiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CronopiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42297361DC9845C002FD0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B42297381DC9845C002FD0AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B42297381DC9845C002FD0AE /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		B422973B1DC9845C002FD0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B422973D1DC9845C002FD0AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B42297401DC9845C002FD0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,7 +51,8 @@
 		B42297521DC9845C002FD0AE /* CronopiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CronopiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42297561DC9845C002FD0AE /* CronopiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronopiOSUITests.swift; sourceTree = "<group>"; };
 		B42297581DC9845C002FD0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4247B6A1DCD6629008CD33C /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		B4247B6A1DCD6629008CD33C /* PagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
+		B4247B6C1DCD7CC2008CD33C /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
 		B4D2493D1DCBABD40020E105 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		B4D2493F1DCBABF70020E105 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,14 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				B42297361DC9845C002FD0AE /* AppDelegate.swift */,
-				B42297381DC9845C002FD0AE /* ViewController.swift */,
+				B4247B6A1DCD6629008CD33C /* PagesViewController.swift */,
+				B42297381DC9845C002FD0AE /* SinglePageViewController.swift */,
 				B422973A1DC9845C002FD0AE /* Main.storyboard */,
+				B4247B6C1DCD7CC2008CD33C /* PageView.xib */,
 				B422973D1DC9845C002FD0AE /* Assets.xcassets */,
 				B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */,
 				B42297421DC9845C002FD0AE /* Info.plist */,
 				B4D2493D1DCBABD40020E105 /* OverlayView.xib */,
 				B4D2493F1DCBABF70020E105 /* OverlayView.swift */,
-				B4247B6A1DCD6629008CD33C /* PageViewController.swift */,
 			);
 			path = CronopiOS;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */,
 				B422973E1DC9845C002FD0AE /* Assets.xcassets in Resources */,
 				B422973C1DC9845C002FD0AE /* Main.storyboard in Resources */,
+				B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */,
-				B42297391DC9845C002FD0AE /* ViewController.swift in Sources */,
+				B42297391DC9845C002FD0AE /* SinglePageViewController.swift in Sources */,
 				B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */,
-				B4247B6B1DCD6629008CD33C /* PageViewController.swift in Sources */,
+				B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

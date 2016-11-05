@@ -1,5 +1,5 @@
 //
-//  PageViewController.swift
+//  PagesViewController.swift
 //  CronopiOS
 //
 //  Created by José Luis Valencia Herrera on 04/11/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PageViewController: UIPageViewController {
+class PagesViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -19,7 +19,7 @@ class PageViewController: UIPageViewController {
     }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newViewController(identifier: "ImagePreviewController"),
+        return [self.newViewController(identifier: "SinglePageViewController"),
                 self.newViewController(identifier:"TestController")]
     }()
     
@@ -28,7 +28,7 @@ class PageViewController: UIPageViewController {
     }
 }
 
-extension PageViewController: UIPageViewControllerDataSource {
+extension PagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
