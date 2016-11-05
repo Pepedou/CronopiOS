@@ -25,6 +25,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="PlO-x0-Yyt">
                                 <rect key="frame" x="16" y="20" width="288" height="401"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhL-PG-VqL">
+                                <rect key="frame" x="229" y="429" width="75" height="30"/>
+                                <state key="normal" title="Tomar foto"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rTx-3K-Ih4"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfd-ic-mgp">
                                 <rect key="frame" x="16" y="429" width="101" height="30"/>
                                 <state key="normal" title="Elegir máscara"/>
@@ -32,11 +39,11 @@
                                     <action selector="selectMask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bw2-aJ-qEX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhL-PG-VqL">
-                                <rect key="frame" x="229" y="429" width="75" height="30"/>
-                                <state key="normal" title="Tomar foto"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wx6-fS-Ahp">
+                                <rect key="frame" x="132" y="429" width="56" height="30"/>
+                                <state key="normal" title="Guardar"/>
                                 <connections>
-                                    <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rTx-3K-Ih4"/>
+                                    <action selector="saveImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhg-cx-FP7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -48,6 +55,8 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mhL-PG-VqL" secondAttribute="bottom" constant="109" id="Ppd-CG-BMe"/>
                             <constraint firstItem="mhL-PG-VqL" firstAttribute="centerY" secondItem="Tfd-ic-mgp" secondAttribute="centerY" id="V7p-tz-75t"/>
                             <constraint firstItem="Tfd-ic-mgp" firstAttribute="top" secondItem="PlO-x0-Yyt" secondAttribute="bottom" constant="8" id="Vnl-5p-cKu"/>
+                            <constraint firstItem="Wx6-fS-Ahp" firstAttribute="top" secondItem="PlO-x0-Yyt" secondAttribute="bottom" constant="8" id="aO9-qO-zdh"/>
+                            <constraint firstItem="Wx6-fS-Ahp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aeG-qj-KqN"/>
                             <constraint firstItem="PlO-x0-Yyt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-63.5" id="e6Q-k2-FW0"/>
                             <constraint firstItem="mhL-PG-VqL" firstAttribute="top" secondItem="PlO-x0-Yyt" secondAttribute="bottom" constant="8" id="iO3-uZ-6Cp"/>
                             <constraint firstItem="PlO-x0-Yyt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l8L-cz-Hjy"/>
@@ -56,6 +65,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="PlO-x0-Yyt" id="uQG-oh-lmX"/>
+                        <outlet property="saveButton" destination="Wx6-fS-Ahp" id="wk3-a8-0Zf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

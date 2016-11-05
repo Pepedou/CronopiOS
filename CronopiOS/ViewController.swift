@@ -12,6 +12,7 @@ import UIKit
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var saveButton: UIButton!
     var overlayImage: UIImage?
 
     @IBAction func takePhoto(_ sender: UIButton) {
@@ -106,11 +107,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             UIGraphicsEndImageContext()
             
             self.imageView.image = renderedImage
+            self.saveButton.isEnabled = true
         }
         else
         {
             self.overlayImage = info[UIImagePickerControllerEditedImage] as? UIImage
             self.imageView.image = self.overlayImage
+            self.saveButton.isEnabled = false
         }
         
         dismiss(animated: true, completion: nil)
@@ -136,6 +139,28 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil )
+    }
+    
+    @IBAction func saveImage(_ sender: UIButton) {
+        UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
+        guard error == nil else {
+            let alert = UIAlertController(title: "¡Ups!", message: "No se pudo guardar la imagen.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ni modo", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            self.saveButton.isEnabled = true
+            
+            return
+        }
+        
+        let alert = UIAlertController(title: "¡Éxito!", message: "Imagen guardada exitosamente.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "¡Genial!", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        self.saveButton.isEnabled = false
+        
+        return
     }
 }
 
