@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bzM-bC-hTE">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,8 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CronopiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ImagePreviewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="CronopiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -46,9 +47,15 @@
                                     <action selector="saveImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhg-cx-FP7"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="l6U-zg-mAV">
+                                <rect key="frame" x="149" y="531" width="23" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0078431372550000003" green="0.41176470590000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="l6U-zg-mAV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Cs-GQ-Gpk"/>
                             <constraint firstItem="PlO-x0-Yyt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5ba-MV-Byc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mhL-PG-VqL" secondAttribute="trailing" id="DeT-AZ-nKZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Tfd-ic-mgp" secondAttribute="leading" id="EAd-BL-Jac"/>
@@ -61,6 +68,7 @@
                             <constraint firstItem="mhL-PG-VqL" firstAttribute="top" secondItem="PlO-x0-Yyt" secondAttribute="bottom" constant="8" id="iO3-uZ-6Cp"/>
                             <constraint firstItem="PlO-x0-Yyt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l8L-cz-Hjy"/>
                             <constraint firstItem="PlO-x0-Yyt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wEG-bN-MCb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="l6U-zg-mAV" secondAttribute="bottom" id="zGq-Du-Ize"/>
                         </constraints>
                     </view>
                     <connections>
@@ -68,9 +76,53 @@
                         <outlet property="saveButton" destination="Wx6-fS-Ahp" id="wk3-a8-0Zf"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.875" y="138.38028169014083"/>
+            <point key="canvasLocation" x="545.625" y="148.94366197183098"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="r3B-4j-sOv">
+            <objects>
+                <viewController storyboardIdentifier="TestController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uYS-vn-pxg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="inO-uJ-Sga"/>
+                        <viewControllerLayoutGuide type="bottom" id="IqA-0Q-Uob"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dZH-9u-b3A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Axx-nL-Xco">
+                                <rect key="frame" x="139.5" y="274" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" numberOfPages="2" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hae-7Y-JXO">
+                                <rect key="frame" x="149" y="531" width="23" height="37"/>
+                                <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0078431372549019607" green="0.41176470588235292" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Axx-nL-Xco" firstAttribute="centerY" secondItem="dZH-9u-b3A" secondAttribute="centerY" id="Qw7-kc-oQ0"/>
+                            <constraint firstItem="Hae-7Y-JXO" firstAttribute="centerX" secondItem="dZH-9u-b3A" secondAttribute="centerX" id="lUy-Np-SbJ"/>
+                            <constraint firstItem="Axx-nL-Xco" firstAttribute="centerX" secondItem="dZH-9u-b3A" secondAttribute="centerX" id="mL1-lx-ze5"/>
+                            <constraint firstItem="IqA-0Q-Uob" firstAttribute="top" secondItem="Hae-7Y-JXO" secondAttribute="bottom" id="r3y-Xk-xHe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zpd-Mp-5nj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549.375" y="855.63380281690138"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="ks4-Zn-Bb7">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="bzM-bC-hTE" customClass="PageViewController" customModule="CronopiOS" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ev-gh-nc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-227" y="149"/>
         </scene>
     </scenes>
     <resources>
