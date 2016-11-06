@@ -14,11 +14,18 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     
     private var imageView: UIImageView!
     private var saveButton: UIButton!
-    private var overlayImage: UIImage?
+    private var overlayImage: UIImage!
+    private var content: UITextView!
+    private var isKeyboardVisible: Bool = false
+    private var keyboardAnimationDuration: NSNumber!
+    private var keyboardHeight: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = ((Bundle.main.loadNibNamed("PageView", owner: self, options: nil)?[0] as? UIView)!)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(SinglePageViewController.keyboardWillAppear), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(SinglePageViewController.keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
         
         for subview in self.view.subviews {
             if subview.isKind(of: UILabel.self) {
@@ -26,8 +33,10 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             }
             else if subview.isKind(of: UIImageView.self) {
                 imageView = (subview as! UIImageView)
+                
                 let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onImageTap))
                 singleTap.numberOfTapsRequired = 1
+                
                 imageView.isUserInteractionEnabled = true
                 imageView.addGestureRecognizer(singleTap)
                 
@@ -40,6 +49,8 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             else if subview.isKind(of: UITextView.self) {
                 let contentLabel = (subview as! UITextView)
                 contentLabel.text = self.bookPage.pageContent
+
+                self.content = contentLabel
             }
         }
     }
@@ -48,40 +59,78 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-            imagePicker.cameraCaptureMode = .photo
-            imagePicker.cameraDevice = .rear
-            
-            let screenSize = UIScreen.main.bounds.size
-            let cameraAspectRatio = CGFloat(4.0 / 3.0)
-            let imageHeight = CGFloat(screenSize.width * cameraAspectRatio)
-            var verticalAdjustment = CGFloat()
-            
-            if (screenSize.height - imageHeight > 54.0) {
-                verticalAdjustment = CGFloat((screenSize.height - imageHeight) / 2.0)
-                verticalAdjustment /= CGFloat(2.0);
-                verticalAdjustment += CGFloat(2.0)
+        if self.isKeyboardVisible == false {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePicker.sourceType = .camera
+                imagePicker.cameraCaptureMode = .photo
+                imagePicker.cameraDevice = .rear
+                
+                let screenSize = UIScreen.main.bounds.size
+                let cameraAspectRatio = CGFloat(4.0 / 3.0)
+                let imageHeight = CGFloat(screenSize.width * cameraAspectRatio)
+                var verticalAdjustment = CGFloat()
+                
+                if (screenSize.height - imageHeight > 54.0) {
+                    verticalAdjustment = CGFloat((screenSize.height - imageHeight) / 2.0)
+                    verticalAdjustment /= CGFloat(2.0);
+                    verticalAdjustment += CGFloat(2.0)
+                }
+                
+                let cameraFrame = imagePicker.view.frame
+                let cameraOrigin = imagePicker.view.frame.origin
+                
+                let overlayView = OverlayView(frame: CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight))
+                
+                if (self.overlayImage != nil) {
+                    overlayView.setImage(image: self.overlayImage!)
+                }
+                
+                imagePicker.cameraOverlayView = overlayView
+                
+                present(imagePicker, animated: true, completion: nil)
             }
-            
-            let cameraFrame = imagePicker.view.frame
-            let cameraOrigin = imagePicker.view.frame.origin
-            
-            let overlayView = OverlayView(frame: CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight))
-
-            if (self.overlayImage != nil) {
-                overlayView.setImage(image: self.overlayImage!)
+            else {
+                let alert = UIAlertController(title: "¡Ups!", message: "El dispositivo no cuenta con cámara.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
             }
-            
-            imagePicker.cameraOverlayView = overlayView
-            
-            present(imagePicker, animated: true, completion: nil)
         }
         else {
-            let alert = UIAlertController(title: "¡Ups!", message: "El dispositivo no cuenta con cámara.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            self.content.endEditing(true)
+            self.animateContent(up: false)
         }
+        
+    }
+    
+    func keyboardWillAppear(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+            let keyboardHeight = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.height
+            
+            self.keyboardAnimationDuration = animationDuration
+            self.keyboardHeight = keyboardHeight
+            self.animateContent(up: true)
+            
+            self.isKeyboardVisible = true
+        }
+    }
+    
+    func keyboardWillDisappear() {
+        self.isKeyboardVisible = false
+    }
+    
+    func animateContent(up: Bool) {
+        var movement = self.keyboardHeight!
+        
+        if up {
+            movement *= CGFloat(-1.0)
+        }
+        
+        UIView.animate(withDuration: self.keyboardAnimationDuration as TimeInterval, animations: {
+            let frame = self.view.frame
+            self.view.frame = CGRect(x: frame.origin.x, y: frame.origin.y + CGFloat(movement), width: frame.size.width, height: frame.size.height)
+            
+        }, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -174,5 +223,32 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         
         return
     }
+    
+
+//    
+//    - (void)textFieldDidBeginEditing:(UITextField *)textField
+//    {
+//    [self animateTextField: textField up: YES];
+//    }
+//    
+//    
+//    - (void)textFieldDidEndEditing:(UITextField *)textField
+//    {
+//    [self animateTextField: textField up: NO];
+//    }
+//    
+//    - (void) animateTextField: (UITextField*) textField up: (BOOL) up
+//    {
+//    const int movementDistance = 80; // tweak as needed
+//    const float movementDuration = 0.3f; // tweak as needed
+//    
+//    int movement = (up ? -movementDistance : movementDistance);
+//    
+//    [UIView beginAnimations: @"anim" context: nil];
+//    [UIView setAnimationBeginsFromCurrentState: YES];
+//    [UIView setAnimationDuration: movementDuration];
+//    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+//    [UIView commitAnimations];
+//    }
 }
 
