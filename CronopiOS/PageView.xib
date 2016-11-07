@@ -16,11 +16,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9y-jj-drj">
-                    <rect key="frame" x="124" y="20" width="72" height="28"/>
+                    <rect key="frame" x="129" y="40" width="62" height="28"/>
                     <attributedString key="attributedText">
                         <fragment content="TITLE">
                             <attributes>
-                                <font key="NSFont" size="24" name="AmericanTypewriter"/>
+                                <font key="NSFont" size="24" name="AbadiMT-CondensedExtraBold"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -28,26 +28,26 @@
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="v3p-OH-e76">
-                    <rect key="frame" x="16" y="56" width="288" height="333"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="v3p-OH-e76">
+                    <rect key="frame" x="16" y="76" width="288" height="333"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="333" id="qS9-95-8Al"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-VM-vlz">
-                    <rect key="frame" x="132" y="518" width="56" height="30"/>
+                    <rect key="frame" x="132" y="498" width="56" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="c51-EY-z3M"/>
                     </constraints>
                     <state key="normal" title="Guardar"/>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0o-1N-jbH" userLabel="ContentTextView">
-                    <rect key="frame" x="16" y="397" width="288" height="113"/>
+                    <rect key="frame" x="16" y="417" width="288" height="73"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                             <attributes>
-                                <font key="NSFont" size="14" name="AmericanTypewriter"/>
+                                <font key="NSFont" size="14" name="AbadiMT-CondensedLight"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -58,7 +58,7 @@
             <color key="backgroundColor" red="0.93351858854293823" green="0.92143189907073975" blue="0.92948353290557861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="x0o-1N-jbH" firstAttribute="top" secondItem="v3p-OH-e76" secondAttribute="bottom" constant="8" id="5t2-5u-9aJ"/>
-                <constraint firstItem="A9y-jj-drj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="5ua-Hv-fbj"/>
+                <constraint firstItem="A9y-jj-drj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="5ua-Hv-fbj"/>
                 <constraint firstAttribute="trailing" secondItem="v3p-OH-e76" secondAttribute="trailing" constant="16" id="Ayd-um-0eS"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="centerX" secondItem="A9y-jj-drj" secondAttribute="centerX" id="HO2-fZ-9Bg"/>
                 <constraint firstItem="A9y-jj-drj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xxd-80-mq3"/>
@@ -67,7 +67,7 @@
                 <constraint firstItem="Ndi-VM-vlz" firstAttribute="top" secondItem="x0o-1N-jbH" secondAttribute="bottom" constant="8" id="qkU-65-Esc"/>
                 <constraint firstItem="Ndi-VM-vlz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="v1B-I9-J2P"/>
                 <constraint firstAttribute="trailing" secondItem="x0o-1N-jbH" secondAttribute="trailing" constant="16" id="xy1-tn-VgW"/>
-                <constraint firstAttribute="bottom" secondItem="Ndi-VM-vlz" secondAttribute="bottom" constant="20" id="yYc-TH-Bx8"/>
+                <constraint firstAttribute="bottom" secondItem="Ndi-VM-vlz" secondAttribute="bottom" constant="40" id="yYc-TH-Bx8"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="zWT-Qe-WBS"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>

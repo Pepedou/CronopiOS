@@ -40,11 +40,12 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
                 imageView.isUserInteractionEnabled = true
                 imageView.addGestureRecognizer(singleTap)
                 
+                imageView.image = bookPage?.pageImage
                 overlayImage = imageView.image
             }
             else if subview.isKind(of: UIButton.self) {
                 saveButton = (subview as! UIButton)
-                saveButton.addTarget(self, action: #selector(SinglePageViewController.saveImage), for: UIControlEvents.touchUpInside)
+                saveButton.addTarget(self, action: #selector(SinglePageViewController.savePage), for: UIControlEvents.touchUpInside)
             }
             else if subview.isKind(of: UITextView.self) {
                 let contentLabel = (subview as! UITextView)
@@ -96,10 +97,18 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             }
         }
         else {
-            self.content.endEditing(true)
-            self.animateContent(up: false)
+            self.onEditingEnd()
         }
         
+    }
+    
+    func onEditingEnd() {
+        if self.content.text != self.bookPage.pageContent {
+            self.saveButton.isEnabled = true
+        }
+        
+        self.content.endEditing(true)
+        self.animateContent(up: false)
     }
     
     func keyboardWillAppear(notification: NSNotification) {
@@ -202,13 +211,24 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         dismiss(animated: true, completion: nil )
     }
     
-    func saveImage() {
+    func savePage() {
+        if self.isKeyboardVisible == false {
+            self.bookPage.pageContent = self.content.text
+            self.bookPage.pageImage = self.imageView.image!
+            self.saveImageToDevice()
+        }
+        else {
+            self.onEditingEnd()
+        }
+    }
+    
+    func saveImageToDevice() {
         UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
         guard error == nil else {
-            let alert = UIAlertController(title: "¡Ups!", message: "No se pudo guardar la imagen.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "¡Ups!", message: "No se pudo guardar la imagen en la biblioteca.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ni modo", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             self.saveButton.isEnabled = true
@@ -216,39 +236,12 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             return
         }
         
-        let alert = UIAlertController(title: "¡Éxito!", message: "Imagen guardada exitosamente.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "¡Éxito!", message: "Imagen guardada en la biblioteca.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "¡Genial!", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
         self.saveButton.isEnabled = false
         
         return
     }
-    
-
-//    
-//    - (void)textFieldDidBeginEditing:(UITextField *)textField
-//    {
-//    [self animateTextField: textField up: YES];
-//    }
-//    
-//    
-//    - (void)textFieldDidEndEditing:(UITextField *)textField
-//    {
-//    [self animateTextField: textField up: NO];
-//    }
-//    
-//    - (void) animateTextField: (UITextField*) textField up: (BOOL) up
-//    {
-//    const int movementDistance = 80; // tweak as needed
-//    const float movementDuration = 0.3f; // tweak as needed
-//    
-//    int movement = (up ? -movementDistance : movementDistance);
-//    
-//    [UIView beginAnimations: @"anim" context: nil];
-//    [UIView setAnimationBeginsFromCurrentState: YES];
-//    [UIView setAnimationDuration: movementDuration];
-//    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-//    [UIView commitAnimations];
-//    }
 }
 
