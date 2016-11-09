@@ -35,7 +35,7 @@ class BookPageUpdater {
         
         let imageData = UIImageJPEGRepresentation(page.pageImage, 1)!
         
-        urlRequest.httpBody = createBodyWithParameters(parameters: params, filePathKey: "image", imageDataKey: imageData as NSData, boundary: boundary) as Data
+        urlRequest.httpBody = createBodyWithParameters(parameters: params, filePathKey: "image", fileName: page.pageTitle, imageDataKey: imageData as NSData, boundary: boundary) as Data
         
         print(String(describing: urlRequest.httpBody!.description))
         
@@ -48,10 +48,6 @@ class BookPageUpdater {
                 completion(true)
             }
             else {
-                if error != nil {
-                    print("\(error)")
-                }
-                
                 completion(false)
             }
         }
@@ -59,7 +55,7 @@ class BookPageUpdater {
         task.resume()
     }
     
-    private func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
+    private func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, fileName: String, imageDataKey: NSData, boundary: String) -> NSData {
         let body = NSMutableData();
         
         if parameters != nil {
@@ -70,7 +66,7 @@ class BookPageUpdater {
             }
         }
         
-        let filename = "user-profile.jpg"
+        let filename = "\(fileName).jpg"
         let mimetype = "image/jpg"
         
         body.appendString(string: "--\(boundary)\r\n")
