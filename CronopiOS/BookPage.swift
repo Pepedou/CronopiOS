@@ -9,12 +9,14 @@
 import UIKit
 
 class BookPage {
+    var pageId: Int
     var pageNumber: Int
     var pageTitle: String
     var pageContent: String
     var pageImage: UIImage
     
-    init(pageNumber number: Int, pageTitle title: String, pageContent content: String, pageImage image: UIImage) {
+    init(pageId: Int, pageNumber number: Int, pageTitle title: String, pageContent content: String, pageImage image: UIImage) {
+        self.pageId = pageId
         self.pageNumber = number
         self.pageTitle = title
         self.pageContent = content

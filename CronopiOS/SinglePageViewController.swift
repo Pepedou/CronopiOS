@@ -26,7 +26,7 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         
         NotificationCenter.default.addObserver(self, selector:#selector(SinglePageViewController.keyboardWillAppear), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(SinglePageViewController.keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
-        
+                
         for subview in self.view.subviews {
             if subview.isKind(of: UILabel.self) {
                 (subview as! UILabel).text = self.bookPage.pageTitle
@@ -215,11 +215,30 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         if self.isKeyboardVisible == false {
             self.bookPage.pageContent = self.content.text
             self.bookPage.pageImage = self.imageView.image!
+            self.updateRemoteBookPage()
             self.saveImageToDevice()
         }
         else {
             self.onEditingEnd()
         }
+    }
+    
+    func updateRemoteBookPage() {
+        let bookUpdater = BookPageUpdater()
+        bookUpdater.updateBookPage(bookPage: self.bookPage, completion: {(success: Bool) -> Void in
+            if success {
+                DispatchQueue.main.async(execute: {() -> Void in
+                    let alert = UIAlertController(title: "¡Éxito!", message: "Página almacenada en el servidor.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "¡A todo dar, mano!", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: "No se pudo sincronizar la página en el servidor. Intenta nuevamente.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Rayos...", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     func saveImageToDevice() {

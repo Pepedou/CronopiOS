@@ -17,6 +17,8 @@
 		B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4247B6A1DCD6629008CD33C /* PagesViewController.swift */; };
 		B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4247B6C1DCD7CC2008CD33C /* PageView.xib */; };
 		B43ECDF71DCD9AAF006D3CD2 /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */; };
+		B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */; };
+		B4A8DA461DD0FC6D00EF88B0 /* BookPageUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */; };
 		B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2493D1DCBABD40020E105 /* OverlayView.xib */; };
 		B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2493F1DCBABF70020E105 /* OverlayView.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,8 @@
 		B4247B6A1DCD6629008CD33C /* PagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		B4247B6C1DCD7CC2008CD33C /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
 		B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
+		B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDownloader.swift; sourceTree = "<group>"; };
+		B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageUpdater.swift; sourceTree = "<group>"; };
 		B4D2493D1DCBABD40020E105 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		B4D2493F1DCBABF70020E105 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +122,8 @@
 				B4D2493D1DCBABD40020E105 /* OverlayView.xib */,
 				B4D2493F1DCBABF70020E105 /* OverlayView.swift */,
 				B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */,
+				B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */,
+				B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */,
 			);
 			path = CronopiOS;
 			sourceTree = "<group>";
@@ -282,6 +288,8 @@
 				B43ECDF71DCD9AAF006D3CD2 /* BookPage.swift in Sources */,
 				B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */,
 				B42297391DC9845C002FD0AE /* SinglePageViewController.swift in Sources */,
+				B4A8DA461DD0FC6D00EF88B0 /* BookPageUpdater.swift in Sources */,
+				B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */,
 				B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */,
 				B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */,
 			);
