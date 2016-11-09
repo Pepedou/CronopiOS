@@ -27,6 +27,8 @@ class PagesViewController: UIPageViewController {
                 self.setViewControllers([singlePageVC!], direction: .forward, animated: true, completion: nil)
             }
         })
+        let bookCoverBC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookCoverViewController")
+        self.setViewControllers([bookCoverBC], direction: .forward, animated: true, completion: nil)
     }
 }
 
