@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9y-jj-drj">
-                    <rect key="frame" x="126.5" y="40" width="68" height="24.5"/>
+                    <rect key="frame" x="126" y="40" width="68" height="25"/>
                     <attributedString key="attributedText">
                         <fragment content="TITLE">
                             <attributes>
@@ -29,32 +30,18 @@
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="v3p-OH-e76">
-                    <rect key="frame" x="16" y="72.5" width="288" height="79"/>
+                    <rect key="frame" x="16" y="73" width="288" height="79"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="333" id="qS9-95-8Al"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-VM-vlz">
-                    <rect key="frame" x="125.5" y="498" width="69" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="c51-EY-z3M"/>
-                    </constraints>
-                    <state key="normal">
-                        <attributedString key="attributedTitle">
-                            <fragment content="Guardar">
-                                <attributes>
-                                    <font key="NSFont" size="15" name="Copperplate-Bold"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                    </state>
-                </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0o-1N-jbH" userLabel="ContentTextView">
-                    <rect key="frame" x="16" y="159.5" width="288" height="330.5"/>
+                    <rect key="frame" x="16" y="160" width="288" height="316"/>
                     <attributedString key="attributedText">
                         <fragment>
                             <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                             <attributes>
+                                <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="14" name="CopperplateGothic-Bold"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -62,26 +49,49 @@
                     </attributedString>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud" translatesAutoresizingMaskIntoConstraints="NO" id="u2P-MD-zw8">
+                    <rect key="frame" x="16" y="484" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="u2P-MD-zw8" secondAttribute="height" multiplier="1:1" id="vkg-JQ-c58"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Save" translatesAutoresizingMaskIntoConstraints="NO" id="147-hd-llO">
+                    <rect key="frame" x="240" y="492" width="64" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="G8H-6k-zql"/>
+                    </constraints>
+                </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="v4U-Ap-CVo">
+                    <rect key="frame" x="150" y="506" width="20" height="20"/>
+                    <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.91383379697799683" green="0.90590745210647583" blue="0.90568095445632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="x0o-1N-jbH" firstAttribute="top" secondItem="v3p-OH-e76" secondAttribute="bottom" constant="8" id="5t2-5u-9aJ"/>
                 <constraint firstItem="A9y-jj-drj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="5ua-Hv-fbj"/>
+                <constraint firstAttribute="bottom" secondItem="u2P-MD-zw8" secondAttribute="bottom" constant="20" id="65P-to-K3i"/>
                 <constraint firstAttribute="trailing" secondItem="v3p-OH-e76" secondAttribute="trailing" constant="16" id="Ayd-um-0eS"/>
+                <constraint firstAttribute="bottom" secondItem="147-hd-llO" secondAttribute="bottom" constant="27" id="DdI-KX-q7R"/>
+                <constraint firstItem="v4U-Ap-CVo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="GlM-FH-9Uq"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="centerX" secondItem="A9y-jj-drj" secondAttribute="centerX" id="HO2-fZ-9Bg"/>
+                <constraint firstItem="u2P-MD-zw8" firstAttribute="top" secondItem="x0o-1N-jbH" secondAttribute="bottom" constant="8" id="NtV-Sz-NwA"/>
                 <constraint firstItem="A9y-jj-drj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xxd-80-mq3"/>
+                <constraint firstItem="u2P-MD-zw8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="bvT-cA-Hgo"/>
+                <constraint firstAttribute="trailing" secondItem="147-hd-llO" secondAttribute="trailing" constant="16" id="clB-Pw-d0R"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="top" secondItem="A9y-jj-drj" secondAttribute="bottom" constant="8" id="hfC-OC-BUs"/>
                 <constraint firstItem="x0o-1N-jbH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="own-Pa-LTu"/>
-                <constraint firstItem="Ndi-VM-vlz" firstAttribute="top" secondItem="x0o-1N-jbH" secondAttribute="bottom" constant="8" id="qkU-65-Esc"/>
-                <constraint firstItem="Ndi-VM-vlz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="v1B-I9-J2P"/>
+                <constraint firstItem="v4U-Ap-CVo" firstAttribute="centerY" secondItem="u2P-MD-zw8" secondAttribute="centerY" id="tD3-Lx-PzC"/>
+                <constraint firstItem="v4U-Ap-CVo" firstAttribute="centerY" secondItem="147-hd-llO" secondAttribute="centerY" id="tuL-0R-gvK"/>
                 <constraint firstAttribute="trailing" secondItem="x0o-1N-jbH" secondAttribute="trailing" constant="16" id="xy1-tn-VgW"/>
-                <constraint firstAttribute="bottom" secondItem="Ndi-VM-vlz" secondAttribute="bottom" constant="40" id="yYc-TH-Bx8"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="zWT-Qe-WBS"/>
             </constraints>
-            <point key="canvasLocation" x="25.5" y="52.5"/>
+            <point key="canvasLocation" x="25" y="52"/>
         </view>
     </objects>
     <resources>
+        <image name="Cloud" width="64" height="64"/>
         <image name="Placeholder" width="101" height="79"/>
+        <image name="Save" width="64" height="64"/>
     </resources>
 </document>

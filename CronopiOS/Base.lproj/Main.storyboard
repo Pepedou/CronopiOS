@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-227" y="149"/>
         </scene>
-        <!--View Controller-->
+        <!--Book Cover View Controller-->
         <scene sceneID="CXW-6h-NIQ">
             <objects>
-                <viewController storyboardIdentifier="BookCoverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iUO-0W-Bxd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookCoverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iUO-0W-Bxd" customClass="BookCoverViewController" customModule="CronopiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bQk-pt-IrT"/>
                         <viewControllerLayoutGuide type="bottom" id="gXW-xC-NcD"/>
@@ -41,8 +41,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCover" translatesAutoresizingMaskIntoConstraints="NO" id="Rzy-85-MlR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4T5-x4-Sxj">
-                                <rect key="frame" x="75" y="244" width="178" height="80"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4T5-x4-Sxj">
+                                <rect key="frame" x="54" y="268" width="212" height="33.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Una historia">
                                         <attributes>
@@ -55,19 +55,27 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BYO-ka-4nU">
+                                <rect key="frame" x="54" y="314" width="212" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Rzy-85-MlR" firstAttribute="top" secondItem="bQk-pt-IrT" secondAttribute="bottom" constant="-20" id="0aT-I0-b40"/>
-                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="top" secondItem="bQk-pt-IrT" secondAttribute="bottom" constant="224" id="MDS-2p-gyx"/>
-                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="centerY" secondItem="Rzy-85-MlR" secondAttribute="centerY" id="Pd0-k9-dWl"/>
-                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="centerX" secondItem="Rzy-85-MlR" secondAttribute="centerX" constant="4" id="WkM-th-D5Y"/>
-                            <constraint firstItem="gXW-xC-NcD" firstAttribute="top" secondItem="Rzy-85-MlR" secondAttribute="bottom" id="dBR-Oy-Vuj"/>
-                            <constraint firstItem="Rzy-85-MlR" firstAttribute="leading" secondItem="wYy-e8-0kq" secondAttribute="leadingMargin" constant="-16" id="eE6-qD-T42"/>
-                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="leading" secondItem="wYy-e8-0kq" secondAttribute="leadingMargin" constant="59" id="l3J-dI-sny"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rzy-85-MlR" secondAttribute="trailing" constant="-16" id="uic-Oe-sWh"/>
+                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="centerY" secondItem="Rzy-85-MlR" secondAttribute="centerY" id="9yn-Tw-Zld"/>
+                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="centerX" secondItem="wYy-e8-0kq" secondAttribute="centerX" id="IkH-uX-l0f"/>
+                            <constraint firstItem="BYO-ka-4nU" firstAttribute="leading" secondItem="4T5-x4-Sxj" secondAttribute="leading" id="Lhy-sj-mvl"/>
+                            <constraint firstItem="gXW-xC-NcD" firstAttribute="top" secondItem="Rzy-85-MlR" secondAttribute="bottom" id="dKB-sJ-mFq"/>
+                            <constraint firstItem="Rzy-85-MlR" firstAttribute="leading" secondItem="wYy-e8-0kq" secondAttribute="leadingMargin" constant="-16" id="gcO-fs-O2R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rzy-85-MlR" secondAttribute="trailing" constant="-16" id="lCf-7k-1sS"/>
+                            <constraint firstItem="BYO-ka-4nU" firstAttribute="centerX" secondItem="wYy-e8-0kq" secondAttribute="centerX" id="p9F-FQ-hA5"/>
+                            <constraint firstItem="Rzy-85-MlR" firstAttribute="top" secondItem="bQk-pt-IrT" secondAttribute="bottom" constant="-20" id="sdQ-Fd-ifO"/>
+                            <constraint firstItem="BYO-ka-4nU" firstAttribute="top" secondItem="4T5-x4-Sxj" secondAttribute="bottom" constant="12.5" id="uKj-Nh-NfF"/>
+                            <constraint firstItem="BYO-ka-4nU" firstAttribute="trailing" secondItem="4T5-x4-Sxj" secondAttribute="trailing" id="vvC-J1-SgH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="progressView" destination="BYO-ka-4nU" id="Z0z-tV-cR5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxp-oL-S0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,9 +15,18 @@ class PagesViewController: UIPageViewController {
         super.viewDidLoad()
         dataSource = self
         
+        self.refreshBook()
+    }
+    
+    func refreshBook() {
         let bookDownloader = BookDownloader()
+        let bookCoverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookCoverViewController") as! BookCoverViewController
         
-        bookDownloader.downloadBook(completion: {(bookPages: [BookPage]) -> Void in
+        bookDownloader.downloadBook(onPageDownload: {(pageNumber: Int, numberOfPages: Int) -> Void in
+            DispatchQueue.main.async {
+                bookCoverVC.progressView.progress = Float(pageNumber) / Float(numberOfPages)
+            }
+        }, completion: {(bookPages: [BookPage]) -> Void in
             self.bookPages = bookPages
             
             DispatchQueue.main.async() { () -> Void in
@@ -27,8 +36,8 @@ class PagesViewController: UIPageViewController {
                 self.setViewControllers([singlePageVC!], direction: .forward, animated: true, completion: nil)
             }
         })
-        let bookCoverBC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookCoverViewController")
-        self.setViewControllers([bookCoverBC], direction: .forward, animated: true, completion: nil)
+        
+        self.setViewControllers([bookCoverVC], direction: .forward, animated: true, completion: nil)
     }
 }
 
