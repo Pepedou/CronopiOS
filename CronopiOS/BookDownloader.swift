@@ -52,7 +52,7 @@ class BookDownloader
                     let image = result["image"] as? String
                     let content = result["content"] as? String
                     
-                    let bookPage = BookPage(pageId: pageId!, pageNumber: pageNumber!, pageTitle: title!, pageContent: content!, pageImage: UIImage())
+                    let bookPage = BookPage(pageId: pageId!, pageNumber: pageNumber!, pageTitle: title!, pageContent: content!, pageImage: nil)
                     self.bookPages.append(bookPage)
                     downloadImage(url: URL(string: image!)!, forPageIndex: bookPage.pageNumber)
                 }
@@ -71,14 +71,20 @@ class BookDownloader
     }
 
     private func downloadImage(url: URL, forPageIndex: Int) {
-        print("Download Started")
+        print("Book page \(forPageIndex) download started")
         getDataFromUrl(url: url) { (data, response, error)  in
             guard let data = data, error == nil else { return }
+            
             print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
+            print("Book page \(forPageIndex) download finished")
+            
             self.bookPages[forPageIndex].pageImage = UIImage(data: data)!
             
-            if forPageIndex + 1 == self.pagesCount {
+            let numDownloadedImages = self.bookPages.filter({($0.pageImage != nil)}).count
+            
+            let isBookDownloadFinished = (numDownloadedImages == self.pagesCount)
+            
+            if isBookDownloadFinished {
                 self.completion(self.bookPages)
             }
         }
