@@ -115,21 +115,15 @@
 		B42297351DC9845C002FD0AE /* CronopiOS */ = {
 			isa = PBXGroup;
 			children = (
+				B4A7A6311DD60D0B00EFA3F8 /* ViewControllers */,
+				B4A7A6361DD60DA800EFA3F8 /* Storyboards */,
+				B4A7A6351DD60D8600EFA3F8 /* Views */,
+				B4A7A6321DD60D3300EFA3F8 /* Model */,
+				B4A7A6371DD60DBB00EFA3F8 /* Network */,
 				B4EE1B581DD5888900F0C2E5 /* LaunchBookCoverImage.jpg */,
 				B42297361DC9845C002FD0AE /* AppDelegate.swift */,
-				B4247B6A1DCD6629008CD33C /* PagesViewController.swift */,
-				B42297381DC9845C002FD0AE /* SinglePageViewController.swift */,
-				B422973A1DC9845C002FD0AE /* Main.storyboard */,
-				B4247B6C1DCD7CC2008CD33C /* PageView.xib */,
 				B422973D1DC9845C002FD0AE /* Assets.xcassets */,
-				B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */,
 				B42297421DC9845C002FD0AE /* Info.plist */,
-				B4D2493D1DCBABD40020E105 /* OverlayView.xib */,
-				B4D2493F1DCBABF70020E105 /* OverlayView.swift */,
-				B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */,
-				B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */,
-				B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */,
-				B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */,
 			);
 			path = CronopiOS;
 			sourceTree = "<group>";
@@ -150,6 +144,52 @@
 				B42297581DC9845C002FD0AE /* Info.plist */,
 			);
 			path = CronopiOSUITests;
+			sourceTree = "<group>";
+		};
+		B4A7A6311DD60D0B00EFA3F8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B4247B6A1DCD6629008CD33C /* PagesViewController.swift */,
+				B42297381DC9845C002FD0AE /* SinglePageViewController.swift */,
+				B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B4A7A6321DD60D3300EFA3F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B4A7A6351DD60D8600EFA3F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4247B6C1DCD7CC2008CD33C /* PageView.xib */,
+				B4D2493D1DCBABD40020E105 /* OverlayView.xib */,
+				B4D2493F1DCBABF70020E105 /* OverlayView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B4A7A6361DD60DA800EFA3F8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B422973A1DC9845C002FD0AE /* Main.storyboard */,
+				B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B4A7A6371DD60DBB00EFA3F8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */,
+				B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
