@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,18 +24,29 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tdn-tW-Iwe">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
+                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dust" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-BD-J4x">
+                    <rect key="frame" x="325" y="0.0" width="100" height="667"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="ghc-9g-vv7"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.76078431369999999" green="0.078431372550000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="tdn-tW-Iwe" secondAttribute="bottom" id="9YG-JT-Vbq"/>
                 <constraint firstItem="tdn-tW-Iwe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DCD-DT-yxk"/>
+                <constraint firstItem="tAC-BD-J4x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Dbk-Tz-TeG"/>
+                <constraint firstItem="tAC-BD-J4x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Efc-Wn-3s1"/>
                 <constraint firstItem="tdn-tW-Iwe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Iw6-Jm-VSN"/>
+                <constraint firstItem="tAC-BD-J4x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="trailing" id="dpQ-jY-Sei"/>
                 <constraint firstAttribute="trailing" secondItem="tdn-tW-Iwe" secondAttribute="trailing" id="g4I-CK-O8e"/>
+                <constraint firstAttribute="bottom" secondItem="tAC-BD-J4x" secondAttribute="bottom" id="nXn-fj-pmh"/>
             </constraints>
-            <point key="canvasLocation" x="-8" y="109"/>
+            <point key="canvasLocation" x="-8.5" y="108.5"/>
         </view>
     </objects>
     <resources>
-        <image name="Placeholder" width="187" height="333"/>
+        <image name="Dust" width="170" height="535"/>
+        <image name="Placeholder" width="101" height="79"/>
     </resources>
 </document>

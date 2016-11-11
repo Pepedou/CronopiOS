@@ -22,6 +22,7 @@
 		B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2493D1DCBABD40020E105 /* OverlayView.xib */; };
 		B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2493F1DCBABF70020E105 /* OverlayView.swift */; };
 		B4EE1B571DD56CD400F0C2E5 /* BookCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */; };
+		B4EE1B591DD5888900F0C2E5 /* LaunchBookCoverImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4EE1B581DD5888900F0C2E5 /* LaunchBookCoverImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B4D2493D1DCBABD40020E105 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		B4D2493F1DCBABF70020E105 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCoverViewController.swift; sourceTree = "<group>"; };
+		B4EE1B581DD5888900F0C2E5 /* LaunchBookCoverImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LaunchBookCoverImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		B42297351DC9845C002FD0AE /* CronopiOS */ = {
 			isa = PBXGroup;
 			children = (
+				B4EE1B581DD5888900F0C2E5 /* LaunchBookCoverImage.jpg */,
 				B42297361DC9845C002FD0AE /* AppDelegate.swift */,
 				B4247B6A1DCD6629008CD33C /* PagesViewController.swift */,
 				B42297381DC9845C002FD0AE /* SinglePageViewController.swift */,
@@ -259,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4EE1B591DD5888900F0C2E5 /* LaunchBookCoverImage.jpg in Resources */,
 				B42297411DC9845C002FD0AE /* LaunchScreen.storyboard in Resources */,
 				B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */,
 				B422973E1DC9845C002FD0AE /* Assets.xcassets in Resources */,
