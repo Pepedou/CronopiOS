@@ -56,6 +56,10 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
                     singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     self.saveIconView = imageView
+                case 3:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.refreshBook))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
                 default:
                     continue
                 }
@@ -77,6 +81,10 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         super.viewWillDisappear(animated)
         self.bookPage.pageContent = self.content.text
         self.bookPage.pageImage = self.pageImageView.image!
+    }
+    
+    func refreshBook() {
+        (self.parent as? PagesViewController)?.refreshBook()
     }
     
     func onImageTap() {

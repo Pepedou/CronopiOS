@@ -45,6 +45,10 @@ extension PagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard viewController.isKind(of: SinglePageViewController.self) else {
+            return nil
+        }
+        
         let singlePageVC = viewController as! SinglePageViewController
         let currentPageNumber = singlePageVC.bookPage.pageNumber
         
@@ -60,6 +64,10 @@ extension PagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard viewController.isKind(of: SinglePageViewController.self) else {
+            return nil
+        }
+        
         let singlePageVC = viewController as! SinglePageViewController
         let currentPageNumber = singlePageVC.bookPage.pageNumber
         

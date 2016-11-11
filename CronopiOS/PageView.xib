@@ -39,7 +39,7 @@
                     <rect key="frame" x="16" y="160" width="288" height="316"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <attributes>
                                 <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="14" name="CopperplateGothic-Bold"/>
@@ -65,6 +65,13 @@
                     <rect key="frame" x="150" y="506" width="20" height="20"/>
                     <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </activityIndicatorView>
+                <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Refresh" translatesAutoresizingMaskIntoConstraints="NO" id="RvV-k6-Qav">
+                    <rect key="frame" x="279" y="40" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="pvn-gD-EQu"/>
+                        <constraint firstAttribute="width" constant="25" id="t8g-Ep-Qnr"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.91383379697799683" green="0.90590745210647583" blue="0.90568095445632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -75,8 +82,10 @@
                 <constraint firstAttribute="bottom" secondItem="147-hd-llO" secondAttribute="bottom" constant="27" id="DdI-KX-q7R"/>
                 <constraint firstItem="v4U-Ap-CVo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="GlM-FH-9Uq"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="centerX" secondItem="A9y-jj-drj" secondAttribute="centerX" id="HO2-fZ-9Bg"/>
+                <constraint firstItem="RvV-k6-Qav" firstAttribute="centerY" secondItem="A9y-jj-drj" secondAttribute="centerY" id="LF2-dq-Bqy"/>
                 <constraint firstItem="u2P-MD-zw8" firstAttribute="top" secondItem="x0o-1N-jbH" secondAttribute="bottom" constant="8" id="NtV-Sz-NwA"/>
                 <constraint firstItem="A9y-jj-drj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xxd-80-mq3"/>
+                <constraint firstAttribute="trailing" secondItem="RvV-k6-Qav" secondAttribute="trailing" constant="16" id="b2K-lc-9ih"/>
                 <constraint firstItem="u2P-MD-zw8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="bvT-cA-Hgo"/>
                 <constraint firstAttribute="trailing" secondItem="147-hd-llO" secondAttribute="trailing" constant="16" id="clB-Pw-d0R"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="top" secondItem="A9y-jj-drj" secondAttribute="bottom" constant="8" id="hfC-OC-BUs"/>
@@ -86,12 +95,13 @@
                 <constraint firstAttribute="trailing" secondItem="x0o-1N-jbH" secondAttribute="trailing" constant="16" id="xy1-tn-VgW"/>
                 <constraint firstItem="v3p-OH-e76" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="zWT-Qe-WBS"/>
             </constraints>
-            <point key="canvasLocation" x="25" y="52"/>
+            <point key="canvasLocation" x="-73" y="27"/>
         </view>
     </objects>
     <resources>
         <image name="Cloud" width="64" height="64"/>
         <image name="Placeholder" width="101" height="79"/>
+        <image name="Refresh" width="64" height="64"/>
         <image name="Save" width="64" height="64"/>
     </resources>
 </document>
