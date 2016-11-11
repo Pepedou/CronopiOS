@@ -30,10 +30,8 @@ class PagesViewController: UIPageViewController {
             self.bookPages = bookPages
             
             DispatchQueue.main.async() { () -> Void in
-                let singlePageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePageViewController") as? SinglePageViewController
-                singlePageVC?.bookPage = bookPages.first
-                
-                self.setViewControllers([singlePageVC!], direction: .forward, animated: true, completion: nil)
+                let prologueVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrologueViewController")
+                self.setViewControllers([prologueVC], direction: .forward, animated: true, completion: nil)
             }
         })
         
@@ -52,8 +50,12 @@ extension PagesViewController: UIPageViewControllerDataSource {
         let singlePageVC = viewController as! SinglePageViewController
         let currentPageNumber = singlePageVC.bookPage.pageNumber
         
-        guard currentPageNumber > 0 else {
+        guard currentPageNumber >= 0 else {
             return nil
+        }
+        
+        if currentPageNumber == 0 {
+            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrologueViewController")
         }
         
         let previousPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePageViewController") as? SinglePageViewController
@@ -64,12 +66,21 @@ extension PagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard viewController.isKind(of: SinglePageViewController.self) else {
+        let isPrologue = viewController.restorationIdentifier == "PrologueViewController"
+        let isSinglePage = viewController.isKind(of: SinglePageViewController.self)
+        var currentPageNumber = 0
+        
+        guard isPrologue || isSinglePage else {
             return nil
         }
         
-        let singlePageVC = viewController as! SinglePageViewController
-        let currentPageNumber = singlePageVC.bookPage.pageNumber
+        if isPrologue {
+            currentPageNumber = -1
+        }
+        else {
+            let singlePageVC = viewController as! SinglePageViewController
+            currentPageNumber = singlePageVC.bookPage.pageNumber
+        }
         
         guard currentPageNumber + 1 < self.bookPages.count else {
             return nil
