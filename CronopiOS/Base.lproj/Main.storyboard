@@ -41,36 +41,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCover" translatesAutoresizingMaskIntoConstraints="NO" id="Rzy-85-MlR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4T5-x4-Sxj">
-                                <rect key="frame" x="41" y="267.5" width="238" height="33"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Una historia">
-                                        <attributes>
-                                            <color key="NSColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="33" name="Courier"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="1" height="1"/>
-                            </label>
-                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BYO-ka-4nU">
-                                <rect key="frame" x="41" y="312.5" width="238" height="2"/>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="BYO-ka-4nU">
+                                <rect key="frame" x="110" y="547.5" width="100" height="2.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="5BQ-0z-71W"/>
+                                    <constraint firstAttribute="width" constant="100" id="FS4-3a-ahh"/>
+                                </constraints>
+                                <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" red="0.68227945317299032" green="0.87436868686868685" blue="0.65110793498876884" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="centerY" secondItem="Rzy-85-MlR" secondAttribute="centerY" id="9yn-Tw-Zld"/>
-                            <constraint firstItem="4T5-x4-Sxj" firstAttribute="centerX" secondItem="wYy-e8-0kq" secondAttribute="centerX" id="IkH-uX-l0f"/>
-                            <constraint firstItem="BYO-ka-4nU" firstAttribute="leading" secondItem="4T5-x4-Sxj" secondAttribute="leading" id="Lhy-sj-mvl"/>
+                            <constraint firstItem="gXW-xC-NcD" firstAttribute="top" secondItem="BYO-ka-4nU" secondAttribute="bottom" constant="19" id="HIQ-zc-hdD"/>
                             <constraint firstItem="gXW-xC-NcD" firstAttribute="top" secondItem="Rzy-85-MlR" secondAttribute="bottom" id="dKB-sJ-mFq"/>
                             <constraint firstItem="Rzy-85-MlR" firstAttribute="leading" secondItem="wYy-e8-0kq" secondAttribute="leadingMargin" constant="-16" id="gcO-fs-O2R"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rzy-85-MlR" secondAttribute="trailing" constant="-16" id="lCf-7k-1sS"/>
                             <constraint firstItem="BYO-ka-4nU" firstAttribute="centerX" secondItem="wYy-e8-0kq" secondAttribute="centerX" id="p9F-FQ-hA5"/>
                             <constraint firstItem="Rzy-85-MlR" firstAttribute="top" secondItem="bQk-pt-IrT" secondAttribute="bottom" constant="-20" id="sdQ-Fd-ifO"/>
-                            <constraint firstItem="BYO-ka-4nU" firstAttribute="top" secondItem="4T5-x4-Sxj" secondAttribute="bottom" constant="12.5" id="uKj-Nh-NfF"/>
-                            <constraint firstItem="BYO-ka-4nU" firstAttribute="trailing" secondItem="4T5-x4-Sxj" secondAttribute="trailing" id="vvC-J1-SgH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -93,20 +81,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQz-qS-qK8">
-                                <rect key="frame" x="109.5" y="28" width="101" height="24"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Prólogo">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="Courier"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PageBackground" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-ym-n78">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="szA-9P-V8h">
+                                <rect key="frame" x="16" y="88" width="288" height="460"/>
+                                <color key="backgroundColor" red="0.9137254901960784" green="0.92156862745098034" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrY-JC-j3Q">
-                                <rect key="frame" x="16" y="60" width="288" height="488"/>
+                                <rect key="frame" x="29" y="101" width="262" height="434"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <mutableString key="content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
@@ -115,22 +98,43 @@ Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdie
 
 Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac</mutableString>
                                         <attributes>
-                                            <font key="NSFont" size="14" name="CourierNewPSMT"/>
+                                            <color key="NSBackgroundColor" red="0.99285586389931957" green="1" blue="0.94771684653267474" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="NEOTERIC"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQz-qS-qK8">
+                                <rect key="frame" x="82.5" y="33" width="155.5" height="42"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Prólogo">
+                                        <attributes>
+                                            <font key="NSFont" size="42" name="NEOTERIC"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="wrY-JC-j3Q" secondAttribute="leading" id="4Ou-0E-ktV"/>
+                            <constraint firstItem="tq4-ym-n78" firstAttribute="leading" secondItem="wNV-gI-mj3" secondAttribute="leadingMargin" constant="-16" id="0dT-nO-VxL"/>
+                            <constraint firstItem="wrY-JC-j3Q" firstAttribute="leading" secondItem="wNV-gI-mj3" secondAttribute="leadingMargin" constant="13" id="1bY-0p-p9K"/>
+                            <constraint firstItem="FTg-Uw-osT" firstAttribute="top" secondItem="szA-9P-V8h" secondAttribute="bottom" constant="20" id="2cW-nO-eU0"/>
                             <constraint firstItem="nQz-qS-qK8" firstAttribute="centerX" secondItem="wNV-gI-mj3" secondAttribute="centerX" id="C4A-lY-OiS"/>
-                            <constraint firstItem="wrY-JC-j3Q" firstAttribute="top" secondItem="nQz-qS-qK8" secondAttribute="bottom" constant="8" id="YyE-GQ-Dnc"/>
-                            <constraint firstItem="FTg-Uw-osT" firstAttribute="top" secondItem="wrY-JC-j3Q" secondAttribute="bottom" constant="20" id="bjx-Lv-OVv"/>
-                            <constraint firstItem="nQz-qS-qK8" firstAttribute="top" secondItem="cFA-Yv-iI5" secondAttribute="bottom" constant="8" id="cyK-5o-dxl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wrY-JC-j3Q" secondAttribute="trailing" id="sNi-ch-CTE"/>
+                            <constraint firstItem="wrY-JC-j3Q" firstAttribute="top" secondItem="szA-9P-V8h" secondAttribute="top" constant="13" id="CUe-yW-KYp"/>
+                            <constraint firstItem="wrY-JC-j3Q" firstAttribute="bottom" secondItem="szA-9P-V8h" secondAttribute="bottom" constant="-13" id="Eza-Gs-rL1"/>
+                            <constraint firstItem="szA-9P-V8h" firstAttribute="top" secondItem="nQz-qS-qK8" secondAttribute="bottom" constant="13" id="GdL-yJ-NzL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tq4-ym-n78" secondAttribute="trailing" constant="-16" id="Hpo-2q-gRl"/>
+                            <constraint firstItem="FTg-Uw-osT" firstAttribute="top" secondItem="tq4-ym-n78" secondAttribute="bottom" id="Jo1-vf-kZI"/>
+                            <constraint firstItem="nQz-qS-qK8" firstAttribute="top" secondItem="cFA-Yv-iI5" secondAttribute="bottom" constant="13" id="cyK-5o-dxl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="szA-9P-V8h" secondAttribute="trailing" id="hTI-OS-emR"/>
+                            <constraint firstItem="wrY-JC-j3Q" firstAttribute="trailing" secondItem="szA-9P-V8h" secondAttribute="trailing" constant="-13" id="j2K-2y-TCG"/>
+                            <constraint firstItem="tq4-ym-n78" firstAttribute="top" secondItem="cFA-Yv-iI5" secondAttribute="bottom" constant="-20" id="m7Y-QO-8hw"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="szA-9P-V8h" secondAttribute="leading" id="vLs-ZG-owd"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -140,6 +144,7 @@ Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam acc
         </scene>
     </scenes>
     <resources>
-        <image name="BookCover" width="1431" height="2133"/>
+        <image name="BookCover" width="320" height="568"/>
+        <image name="PageBackground" width="320" height="568"/>
     </resources>
 </document>

@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchBookCoverImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="E0K-gy-BKv">
+                            <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCoverLaunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="E0K-gy-BKv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
@@ -44,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchBookCoverImage.jpg" width="2862" height="4266"/>
+        <image name="BookCoverLaunchScreen.png" width="640" height="1136"/>
     </resources>
 </document>

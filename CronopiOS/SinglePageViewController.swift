@@ -60,6 +60,10 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.refreshBook))
                     singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
+                case 4:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.backgroundTap))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
                 default:
                     continue
                 }
@@ -301,6 +305,12 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         self.saveIconView.isUserInteractionEnabled = false
         
         return
+    }
+    
+    func backgroundTap() {
+        if self.isKeyboardVisible {
+            self.onEditingEnd()
+        }
     }
 }
 
