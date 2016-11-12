@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,12 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CronopioWithFlower" translatesAutoresizingMaskIntoConstraints="NO" id="E0K-gy-BKv">
-                                <rect key="frame" x="48" y="211" width="225" height="146"/>
+                            <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCoverLaunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="E0K-gy-BKv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="E0K-gy-BKv" secondAttribute="trailing" constant="-16" id="5cR-w4-ze0"/>
+                            <constraint firstItem="E0K-gy-BKv" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="L0A-S8-kQs"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="E0K-gy-BKv" secondAttribute="bottom" id="YFP-ny-vyQ"/>
+                            <constraint firstItem="E0K-gy-BKv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-16" id="bcX-ra-A2T"/>
+                            <constraint firstItem="E0K-gy-BKv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fLC-wz-sWg"/>
                             <constraint firstItem="E0K-gy-BKv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="i7L-fu-eBw"/>
                             <constraint firstItem="E0K-gy-BKv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="y76-80-5U4"/>
                         </constraints>
@@ -38,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CronopioWithFlower" width="225" height="146"/>
+        <image name="BookCoverLaunchScreen.png" width="640" height="1136"/>
     </resources>
 </document>

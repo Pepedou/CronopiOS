@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import AudioToolbox
 
 
 class SinglePageViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var bookPage: BookPage!
+    var isKeyboardVisible: Bool = false
     
-    private var imageView: UIImageView!
-    private var saveButton: UIButton!
+    private var pageImageView: UIImageView!
+    private var saveIconView: UIImageView!
+    private var cloudIconView: UIImageView!
     private var overlayImage: UIImage!
+    private var muteIconView: UIImageView!
     private var content: UITextView!
-    private var isKeyboardVisible: Bool = false
+    private var activityIndicator: UIActivityIndicatorView!
+    
     private var keyboardAnimationDuration: NSNumber!
     private var keyboardHeight: CGFloat!
     
@@ -32,79 +37,141 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
                 (subview as! UILabel).text = self.bookPage.pageTitle
             }
             else if subview.isKind(of: UIImageView.self) {
-                imageView = (subview as! UIImageView)
-                
-                let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onImageTap))
-                singleTap.numberOfTapsRequired = 1
-                
+                let imageView = (subview as! UIImageView)
                 imageView.isUserInteractionEnabled = true
-                imageView.addGestureRecognizer(singleTap)
-                
-                imageView.image = bookPage?.pageImage
-                overlayImage = imageView.image
-            }
-            else if subview.isKind(of: UIButton.self) {
-                saveButton = (subview as! UIButton)
-                saveButton.addTarget(self, action: #selector(SinglePageViewController.savePage), for: UIControlEvents.touchUpInside)
+
+                switch imageView.tag {
+                case 0:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onImageTap))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
+                    imageView.image = bookPage?.pageImage
+                    overlayImage = imageView.image
+                    self.pageImageView = imageView
+                    break
+                case 1:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.savePage))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
+                    self.cloudIconView = imageView
+                    break
+                case 2:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.saveImageToDevice))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
+                    self.saveIconView = imageView
+                    break
+                case 3:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onRefreshIconTap))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
+                    break
+                case 4:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.backgroundTap))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
+                    break
+                case 5:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onMuteIconTap))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
+                    self.muteIconView = imageView
+                    break
+                default:
+                    continue
+                }
+
             }
             else if subview.isKind(of: UITextView.self) {
                 let contentLabel = (subview as! UITextView)
                 contentLabel.text = self.bookPage.pageContent
-
                 self.content = contentLabel
+            }
+            else if subview.isKind(of: UIActivityIndicatorView.self) {
+                self.activityIndicator = (subview as! UIActivityIndicatorView)
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.content.scrollRangeToVisible(NSRange(location: 0, length: 0))
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.bookPage.pageContent = self.content.text
+        self.bookPage.pageImage = self.pageImageView.image!
+    }
+    
+    func onRefreshIconTap() {
+        if self.isKeyboardVisible {
+            self.onEditingEnd()
+        }
+        else {
+            self.refreshBook()
+        }
+    }
+    
+    func refreshBook() {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+        (self.parent as? PagesViewController)?.refreshBook()
+    }
+    
     func onImageTap() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        
         if self.isKeyboardVisible == false {
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePicker.sourceType = .camera
-                imagePicker.cameraCaptureMode = .photo
-                imagePicker.cameraDevice = .rear
-                
-                let screenSize = UIScreen.main.bounds.size
-                let cameraAspectRatio = CGFloat(4.0 / 3.0)
-                let imageHeight = CGFloat(screenSize.width * cameraAspectRatio)
-                var verticalAdjustment = CGFloat()
-                
-                if (screenSize.height - imageHeight > 54.0) {
-                    verticalAdjustment = CGFloat((screenSize.height - imageHeight) / 2.0)
-                    verticalAdjustment /= CGFloat(2.0);
-                    verticalAdjustment += CGFloat(2.0)
-                }
-                
-                let cameraFrame = imagePicker.view.frame
-                let cameraOrigin = imagePicker.view.frame.origin
-                
-                let overlayView = OverlayView(frame: CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight))
-                
-                if (self.overlayImage != nil) {
-                    overlayView.setImage(image: self.overlayImage!)
-                }
-                
-                imagePicker.cameraOverlayView = overlayView
-                
-                present(imagePicker, animated: true, completion: nil)
-            }
-            else {
-                let alert = UIAlertController(title: "¡Ups!", message: "El dispositivo no cuenta con cámara.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
-            }
+            self.openCamera()
         }
         else {
             self.onEditingEnd()
         }
+    }
+    
+    func openCamera() {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
         
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.cameraDevice = .rear
+            
+            let screenSize = UIScreen.main.bounds.size
+            let cameraAspectRatio = CGFloat(4.0 / 3.0)
+            let imageHeight = CGFloat(screenSize.width * cameraAspectRatio)
+            var verticalAdjustment = CGFloat()
+            
+            if (screenSize.height - imageHeight > 54.0) {
+                verticalAdjustment = CGFloat((screenSize.height - imageHeight) / 2.0)
+                verticalAdjustment /= CGFloat(2.0);
+                verticalAdjustment += CGFloat(2.0)
+            }
+            
+            let cameraFrame = imagePicker.view.frame
+            let cameraOrigin = imagePicker.view.frame.origin
+            
+            let overlayView = OverlayView(frame: CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight))
+            
+            if (self.overlayImage != nil) {
+                overlayView.setImage(image: self.overlayImage!)
+            }
+            
+            imagePicker.cameraOverlayView = overlayView
+            
+            present(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "¡Ups!", message: "El dispositivo no cuenta con cámara.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func onEditingEnd() {
         if self.content.text != self.bookPage.pageContent {
-            self.saveButton.isEnabled = true
+            self.saveIconView.isUserInteractionEnabled = true
         }
         
         self.content.endEditing(true)
@@ -148,7 +215,7 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         if picker.sourceType == .camera
         {
             var chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-            let overlayImage = self.imageView.image
+            let overlayImage = self.pageImageView.image
             
             let targetSize = (chosenImage?.size)!
             let targetRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width, height: targetSize.height)
@@ -176,14 +243,14 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             
             UIGraphicsEndImageContext()
             
-            self.imageView.image = renderedImage
-            self.saveButton.isEnabled = true
+            self.pageImageView.image = renderedImage
+            self.saveIconView.isUserInteractionEnabled = true
         }
         else
         {
             self.overlayImage = info[UIImagePickerControllerEditedImage] as? UIImage
-            self.imageView.image = self.overlayImage
-            self.saveButton.isEnabled = false
+            self.pageImageView.image = self.overlayImage
+            self.saveIconView.isUserInteractionEnabled = false
         }
         
         dismiss(animated: true, completion: nil)
@@ -213,10 +280,10 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     
     func savePage() {
         if self.isKeyboardVisible == false {
+            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
             self.bookPage.pageContent = self.content.text
-            self.bookPage.pageImage = self.imageView.image!
+            self.bookPage.pageImage = self.pageImageView.image!
             self.updateRemoteBookPage()
-            self.saveImageToDevice()
         }
         else {
             self.onEditingEnd()
@@ -225,24 +292,34 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     
     func updateRemoteBookPage() {
         let bookUpdater = BookPageUpdater()
+        self.activityIndicator.startAnimating()
+        
         bookUpdater.updateBookPage(bookPage: self.bookPage, completion: {(success: Bool) -> Void in
-            if success {
-                DispatchQueue.main.async(execute: {() -> Void in
+            DispatchQueue.main.async(execute: {() -> Void in
+                if success {
                     let alert = UIAlertController(title: "¡Éxito!", message: "Página almacenada en el servidor.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "¡A todo dar, mano!", style: .default, handler: nil))
+                    
+                    self.activityIndicator.stopAnimating()
                     self.present(alert, animated: true, completion: nil)
-                })
-            }
-            else {
-                let alert = UIAlertController(title: "Error", message: "No se pudo sincronizar la página en el servidor. Intenta nuevamente.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Rayos...", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+                }
+                else {
+                    let alert = UIAlertController(title: "Error", message: "No se pudo sincronizar la página en el servidor. Intenta nuevamente.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Rayos...", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
         })
     }
     
     func saveImageToDevice() {
-        UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        if self.isKeyboardVisible == false {
+            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+            UIImageWriteToSavedPhotosAlbum(self.pageImageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+        else {
+            self.onEditingEnd()
+        }
     }
     
     func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
@@ -250,7 +327,7 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             let alert = UIAlertController(title: "¡Ups!", message: "No se pudo guardar la imagen en la biblioteca.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ni modo", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
-            self.saveButton.isEnabled = true
+            self.saveIconView.isUserInteractionEnabled = true
             
             return
         }
@@ -258,9 +335,30 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         let alert = UIAlertController(title: "¡Éxito!", message: "Imagen guardada en la biblioteca.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "¡Genial!", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
-        self.saveButton.isEnabled = false
+        self.saveIconView.isUserInteractionEnabled = false
         
         return
+    }
+    
+    func backgroundTap() {
+        if self.isKeyboardVisible {
+            self.onEditingEnd()
+        }
+    }
+    
+    func onMuteIconTap() {
+        if self.isKeyboardVisible {
+            self.onEditingEnd()
+        }
+        else {
+            self.toggleBackgroundMusic()
+        }
+    }
+    
+    func toggleBackgroundMusic() {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+        self.muteIconView.isHighlighted = !self.muteIconView.isHighlighted
+        (self.parent as? PagesViewController)?.toggleAudio()
     }
 }
 

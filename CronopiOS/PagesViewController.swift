@@ -7,26 +7,64 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PagesViewController: UIPageViewController {
     var bookPages: [BookPage] = []
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         
-        let bookDownloader = BookDownloader()
+        self.playBackgroundMusic()
+        self.refreshBook()
+    }
+    
+    func playBackgroundMusic() {
+        let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: "BackgroundMusic", ofType: "mp3")!)
         
-        bookDownloader.downloadBook(completion: {(bookPages: [BookPage]) -> Void in
+        do {
+            try self.audioPlayer = AVAudioPlayer(contentsOf: audioFileURL)
+            self.audioPlayer?.numberOfLoops = -1
+            self.audioPlayer?.prepareToPlay()
+            self.audioPlayer?.play()
+        }
+        catch {
+            print("Unable to play background music.")
+        }
+    }
+    
+    func refreshBook() {
+        let bookDownloader = BookDownloader()
+        let bookCoverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookCoverViewController") as! BookCoverViewController
+        self.audioPlayer?.setVolume(1.0, fadeDuration: 3)
+        
+        bookDownloader.downloadBook(onPageDownload: {(pageNumber: Int, numberOfPages: Int) -> Void in
+            DispatchQueue.main.async {
+                let progress = Float(pageNumber) / Float(numberOfPages)
+                bookCoverVC.progressView.progress = progress
+            }
+        }, completion: {(bookPages: [BookPage]) -> Void in
             self.bookPages = bookPages
+            self.audioPlayer?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   .setVolume(0.1, fadeDuration: 3)
             
             DispatchQueue.main.async() { () -> Void in
-                let singlePageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePageViewController") as? SinglePageViewController
-                singlePageVC?.bookPage = bookPages.first
-                
-                self.setViewControllers([singlePageVC!], direction: .forward, animated: true, completion: nil)
+                let prologueVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrologueViewController")
+                self.setViewControllers([prologueVC], direction: .forward, animated: true, completion: nil)
             }
         })
+        
+        self.setViewControllers([bookCoverVC], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func toggleAudio() {
+        if (self.audioPlayer?.isPlaying)! {
+            self.audioPlayer?.pause()
+        }
+        else {
+            self.audioPlayer?.play()
+        }
     }
 }
 
@@ -34,11 +72,19 @@ extension PagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard viewController.isKind(of: SinglePageViewController.self) else {
+            return nil
+        }
+        
         let singlePageVC = viewController as! SinglePageViewController
         let currentPageNumber = singlePageVC.bookPage.pageNumber
         
-        guard currentPageNumber > 0 else {
+        guard currentPageNumber >= 0 else {
             return nil
+        }
+        
+        if currentPageNumber == 0 {
+            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrologueViewController")
         }
         
         let previousPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SinglePageViewController") as? SinglePageViewController
@@ -49,8 +95,21 @@ extension PagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let singlePageVC = viewController as! SinglePageViewController
-        let currentPageNumber = singlePageVC.bookPage.pageNumber
+        let isPrologue = viewController.restorationIdentifier == "PrologueViewController"
+        let isSinglePage = viewController.isKind(of: SinglePageViewController.self)
+        var currentPageNumber = 0
+        
+        guard isPrologue || isSinglePage else {
+            return nil
+        }
+        
+        if isPrologue {
+            currentPageNumber = -1
+        }
+        else {
+            let singlePageVC = viewController as! SinglePageViewController
+            currentPageNumber = singlePageVC.bookPage.pageNumber
+        }
         
         guard currentPageNumber + 1 < self.bookPages.count else {
             return nil

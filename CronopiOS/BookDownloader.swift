@@ -14,14 +14,16 @@ class BookDownloader
     private let AUTH_VALUE = "Token 65df8fa95b9001381d8c8ea46db8c793c9bff231"
     private var pagesCount = 0
     private var completion: ((_ bookPages: [BookPage]) -> Void)!
+    private var onPageDownload: ((_ pageNumber: Int, _ numberOfPages: Int) -> Void)!
     
     var bookPages: [BookPage] = []
     
-    func downloadBook(completion: @escaping (_ bookPages: [BookPage]) -> Void) {
+    func downloadBook(onPageDownload: @escaping (_ pageNumber: Int, _ numberOfPages: Int) -> Void, completion: @escaping (_ bookPages: [BookPage]) -> Void) {
         let requestURL = URL(string: BOOK_PAGES_API_URL)!
         var urlRequest = URLRequest(url: requestURL)
         
         self.completion = completion
+        self.onPageDownload = onPageDownload
         
         urlRequest.addValue(AUTH_VALUE, forHTTPHeaderField: "Authorization")
         
@@ -52,7 +54,7 @@ class BookDownloader
                     let image = result["image"] as? String
                     let content = result["content"] as? String
                     
-                    let bookPage = BookPage(pageId: pageId!, pageNumber: pageNumber!, pageTitle: title!, pageContent: content!, pageImage: UIImage())
+                    let bookPage = BookPage(pageId: pageId!, pageNumber: pageNumber!, pageTitle: title!, pageContent: content!, pageImage: nil)
                     self.bookPages.append(bookPage)
                     downloadImage(url: URL(string: image!)!, forPageIndex: bookPage.pageNumber)
                 }
@@ -71,14 +73,22 @@ class BookDownloader
     }
 
     private func downloadImage(url: URL, forPageIndex: Int) {
-        print("Download Started")
+        print("Book page \(forPageIndex) download started")
         getDataFromUrl(url: url) { (data, response, error)  in
             guard let data = data, error == nil else { return }
+            
             print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
+            print("Book page \(forPageIndex) download finished")
+            
             self.bookPages[forPageIndex].pageImage = UIImage(data: data)!
             
-            if forPageIndex + 1 == self.pagesCount {
+            let numDownloadedImages = self.bookPages.filter({($0.pageImage != nil)}).count
+            
+            let isBookDownloadFinished = (numDownloadedImages == self.pagesCount)
+            
+            self.onPageDownload(numDownloadedImages, self.pagesCount)
+            
+            if isBookDownloadFinished {
                 self.completion(self.bookPages)
             }
         }

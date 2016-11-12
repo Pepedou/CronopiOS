@@ -13,9 +13,9 @@ class BookPage {
     var pageNumber: Int
     var pageTitle: String
     var pageContent: String
-    var pageImage: UIImage
+    var pageImage: UIImage?
     
-    init(pageId: Int, pageNumber number: Int, pageTitle title: String, pageContent content: String, pageImage image: UIImage) {
+    init(pageId: Int, pageNumber number: Int, pageTitle title: String, pageContent content: String, pageImage image: UIImage?) {
         self.pageId = pageId
         self.pageNumber = number
         self.pageTitle = title

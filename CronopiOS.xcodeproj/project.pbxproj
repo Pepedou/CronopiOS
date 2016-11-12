@@ -17,10 +17,15 @@
 		B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4247B6A1DCD6629008CD33C /* PagesViewController.swift */; };
 		B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4247B6C1DCD7CC2008CD33C /* PageView.xib */; };
 		B43ECDF71DCD9AAF006D3CD2 /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */; };
+		B458AB6B1DD6DC51000D617D /* BookPrologueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458AB6A1DD6DC51000D617D /* BookPrologueViewController.swift */; };
+		B465A1241DD6C000001CD4A6 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */; };
+		B47898221DD6A08B001782D4 /* NEOTERIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47898211DD6A08B001782D4 /* NEOTERIC.ttf */; };
+		B47898241DD6A1AA001782D4 /* BookCoverLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */; };
 		B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */; };
 		B4A8DA461DD0FC6D00EF88B0 /* BookPageUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */; };
 		B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2493D1DCBABD40020E105 /* OverlayView.xib */; };
 		B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2493F1DCBABF70020E105 /* OverlayView.swift */; };
+		B4EE1B571DD56CD400F0C2E5 /* BookCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +62,15 @@
 		B4247B6A1DCD6629008CD33C /* PagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		B4247B6C1DCD7CC2008CD33C /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
 		B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
+		B458AB6A1DD6DC51000D617D /* BookPrologueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPrologueViewController.swift; sourceTree = "<group>"; };
+		B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
+		B47898211DD6A08B001782D4 /* NEOTERIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NEOTERIC.ttf; sourceTree = "<group>"; };
+		B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookCoverLaunchScreen.png; sourceTree = "<group>"; };
 		B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDownloader.swift; sourceTree = "<group>"; };
 		B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageUpdater.swift; sourceTree = "<group>"; };
 		B4D2493D1DCBABD40020E105 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		B4D2493F1DCBABF70020E105 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,19 +121,15 @@
 		B42297351DC9845C002FD0AE /* CronopiOS */ = {
 			isa = PBXGroup;
 			children = (
+				B4A7A6311DD60D0B00EFA3F8 /* ViewControllers */,
+				B4A7A6361DD60DA800EFA3F8 /* Storyboards */,
+				B4A7A6351DD60D8600EFA3F8 /* Views */,
+				B4A7A6321DD60D3300EFA3F8 /* Model */,
+				B4A7A6371DD60DBB00EFA3F8 /* Network */,
+				B47898201DD6A06E001782D4 /* Resources */,
 				B42297361DC9845C002FD0AE /* AppDelegate.swift */,
-				B4247B6A1DCD6629008CD33C /* PagesViewController.swift */,
-				B42297381DC9845C002FD0AE /* SinglePageViewController.swift */,
-				B422973A1DC9845C002FD0AE /* Main.storyboard */,
-				B4247B6C1DCD7CC2008CD33C /* PageView.xib */,
 				B422973D1DC9845C002FD0AE /* Assets.xcassets */,
-				B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */,
 				B42297421DC9845C002FD0AE /* Info.plist */,
-				B4D2493D1DCBABD40020E105 /* OverlayView.xib */,
-				B4D2493F1DCBABF70020E105 /* OverlayView.swift */,
-				B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */,
-				B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */,
-				B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */,
 			);
 			path = CronopiOS;
 			sourceTree = "<group>";
@@ -144,6 +150,63 @@
 				B42297581DC9845C002FD0AE /* Info.plist */,
 			);
 			path = CronopiOSUITests;
+			sourceTree = "<group>";
+		};
+		B47898201DD6A06E001782D4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */,
+				B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */,
+				B47898211DD6A08B001782D4 /* NEOTERIC.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B4A7A6311DD60D0B00EFA3F8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B4247B6A1DCD6629008CD33C /* PagesViewController.swift */,
+				B42297381DC9845C002FD0AE /* SinglePageViewController.swift */,
+				B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */,
+				B458AB6A1DD6DC51000D617D /* BookPrologueViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B4A7A6321DD60D3300EFA3F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B4A7A6351DD60D8600EFA3F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4247B6C1DCD7CC2008CD33C /* PageView.xib */,
+				B4D2493D1DCBABD40020E105 /* OverlayView.xib */,
+				B4D2493F1DCBABF70020E105 /* OverlayView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B4A7A6361DD60DA800EFA3F8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B422973A1DC9845C002FD0AE /* Main.storyboard */,
+				B422973F1DC9845C002FD0AE /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B4A7A6371DD60DBB00EFA3F8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */,
+				B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,10 +320,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B42297411DC9845C002FD0AE /* LaunchScreen.storyboard in Resources */,
+				B47898221DD6A08B001782D4 /* NEOTERIC.ttf in Resources */,
 				B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */,
+				B465A1241DD6C000001CD4A6 /* BackgroundMusic.mp3 in Resources */,
 				B422973E1DC9845C002FD0AE /* Assets.xcassets in Resources */,
 				B422973C1DC9845C002FD0AE /* Main.storyboard in Resources */,
 				B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */,
+				B47898241DD6A1AA001782D4 /* BookCoverLaunchScreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,9 +352,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B43ECDF71DCD9AAF006D3CD2 /* BookPage.swift in Sources */,
+				B4EE1B571DD56CD400F0C2E5 /* BookCoverViewController.swift in Sources */,
 				B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */,
 				B42297391DC9845C002FD0AE /* SinglePageViewController.swift in Sources */,
 				B4A8DA461DD0FC6D00EF88B0 /* BookPageUpdater.swift in Sources */,
+				B458AB6B1DD6DC51000D617D /* BookPrologueViewController.swift in Sources */,
 				B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */,
 				B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */,
 				B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */,

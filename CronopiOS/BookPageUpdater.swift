@@ -33,7 +33,7 @@ class BookPageUpdater {
         
         urlRequest.allHTTPHeaderFields = headers
         
-        let imageData = UIImageJPEGRepresentation(page.pageImage, 1)!
+        let imageData = UIImageJPEGRepresentation(page.pageImage!, 1)!
         
         urlRequest.httpBody = createBodyWithParameters(parameters: params, filePathKey: "image", fileName: page.pageTitle, imageDataKey: imageData as NSData, boundary: boundary) as Data
         
