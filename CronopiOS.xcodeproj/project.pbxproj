@@ -17,6 +17,7 @@
 		B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4247B6A1DCD6629008CD33C /* PagesViewController.swift */; };
 		B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4247B6C1DCD7CC2008CD33C /* PageView.xib */; };
 		B43ECDF71DCD9AAF006D3CD2 /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */; };
+		B458AB6B1DD6DC51000D617D /* BookPrologueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458AB6A1DD6DC51000D617D /* BookPrologueViewController.swift */; };
 		B465A1241DD6C000001CD4A6 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */; };
 		B47898221DD6A08B001782D4 /* NEOTERIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47898211DD6A08B001782D4 /* NEOTERIC.ttf */; };
 		B47898241DD6A1AA001782D4 /* BookCoverLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */; };
@@ -61,6 +62,7 @@
 		B4247B6A1DCD6629008CD33C /* PagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		B4247B6C1DCD7CC2008CD33C /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
 		B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
+		B458AB6A1DD6DC51000D617D /* BookPrologueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPrologueViewController.swift; sourceTree = "<group>"; };
 		B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
 		B47898211DD6A08B001782D4 /* NEOTERIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NEOTERIC.ttf; sourceTree = "<group>"; };
 		B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookCoverLaunchScreen.png; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				B4247B6A1DCD6629008CD33C /* PagesViewController.swift */,
 				B42297381DC9845C002FD0AE /* SinglePageViewController.swift */,
 				B4EE1B561DD56CD400F0C2E5 /* BookCoverViewController.swift */,
+				B458AB6A1DD6DC51000D617D /* BookPrologueViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				B4D249401DCBABF70020E105 /* OverlayView.swift in Sources */,
 				B42297391DC9845C002FD0AE /* SinglePageViewController.swift in Sources */,
 				B4A8DA461DD0FC6D00EF88B0 /* BookPageUpdater.swift in Sources */,
+				B458AB6B1DD6DC51000D617D /* BookPrologueViewController.swift in Sources */,
 				B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */,
 				B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */,
 				B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */,

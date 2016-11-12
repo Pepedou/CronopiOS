@@ -85,13 +85,17 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             else if subview.isKind(of: UITextView.self) {
                 let contentLabel = (subview as! UITextView)
                 contentLabel.text = self.bookPage.pageContent
-
                 self.content = contentLabel
             }
             else if subview.isKind(of: UIActivityIndicatorView.self) {
                 self.activityIndicator = (subview as! UIActivityIndicatorView)
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.content.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }
 
     override func viewWillDisappear(_ animated: Bool) {
