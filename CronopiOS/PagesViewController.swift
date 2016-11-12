@@ -7,20 +7,38 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PagesViewController: UIPageViewController {
     var bookPages: [BookPage] = []
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         
+        self.playBackgroundMusic()
         self.refreshBook()
+    }
+    
+    func playBackgroundMusic() {
+        let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: "BackgroundMusic", ofType: "mp3")!)
+        
+        do {
+            try self.audioPlayer = AVAudioPlayer(contentsOf: audioFileURL)
+            self.audioPlayer?.numberOfLoops = -1
+            self.audioPlayer?.prepareToPlay()
+            self.audioPlayer?.play()
+        }
+        catch {
+            print("Unable to play background music.")
+        }
     }
     
     func refreshBook() {
         let bookDownloader = BookDownloader()
         let bookCoverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookCoverViewController") as! BookCoverViewController
+        self.audioPlayer?.setVolume(1.0, fadeDuration: 3)
         
         bookDownloader.downloadBook(onPageDownload: {(pageNumber: Int, numberOfPages: Int) -> Void in
             DispatchQueue.main.async {
@@ -28,6 +46,7 @@ class PagesViewController: UIPageViewController {
             }
         }, completion: {(bookPages: [BookPage]) -> Void in
             self.bookPages = bookPages
+            self.audioPlayer?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   .setVolume(0.1, fadeDuration: 3)
             
             DispatchQueue.main.async() { () -> Void in
                 let prologueVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrologueViewController")
@@ -36,6 +55,15 @@ class PagesViewController: UIPageViewController {
         })
         
         self.setViewControllers([bookCoverVC], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func toggleAudio() {
+        if (self.audioPlayer?.isPlaying)! {
+            self.audioPlayer?.pause()
+        }
+        else {
+            self.audioPlayer?.play()
+        }
     }
 }
 

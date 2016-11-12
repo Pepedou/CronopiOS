@@ -17,6 +17,7 @@
 		B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4247B6A1DCD6629008CD33C /* PagesViewController.swift */; };
 		B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4247B6C1DCD7CC2008CD33C /* PageView.xib */; };
 		B43ECDF71DCD9AAF006D3CD2 /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */; };
+		B465A1241DD6C000001CD4A6 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */; };
 		B47898221DD6A08B001782D4 /* NEOTERIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47898211DD6A08B001782D4 /* NEOTERIC.ttf */; };
 		B47898241DD6A1AA001782D4 /* BookCoverLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */; };
 		B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */; };
@@ -60,6 +61,7 @@
 		B4247B6A1DCD6629008CD33C /* PagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		B4247B6C1DCD7CC2008CD33C /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
 		B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
+		B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
 		B47898211DD6A08B001782D4 /* NEOTERIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NEOTERIC.ttf; sourceTree = "<group>"; };
 		B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookCoverLaunchScreen.png; sourceTree = "<group>"; };
 		B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDownloader.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		B47898201DD6A06E001782D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */,
 				B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */,
 				B47898211DD6A08B001782D4 /* NEOTERIC.ttf */,
 			);
@@ -316,6 +319,7 @@
 				B42297411DC9845C002FD0AE /* LaunchScreen.storyboard in Resources */,
 				B47898221DD6A08B001782D4 /* NEOTERIC.ttf in Resources */,
 				B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */,
+				B465A1241DD6C000001CD4A6 /* BackgroundMusic.mp3 in Resources */,
 				B422973E1DC9845C002FD0AE /* Assets.xcassets in Resources */,
 				B422973C1DC9845C002FD0AE /* Main.storyboard in Resources */,
 				B4247B6D1DCD7CC2008CD33C /* PageView.xib in Resources */,
