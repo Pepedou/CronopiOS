@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9y-jj-drj">
-                    <rect key="frame" x="128" y="40" width="64" height="32"/>
+                    <rect key="frame" x="128.5" y="40" width="63.5" height="32"/>
                     <attributedString key="attributedText">
                         <fragment content="Title">
                             <attributes>
@@ -43,6 +43,9 @@
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0o-1N-jbH" userLabel="ContentTextView">
                     <rect key="frame" x="24" y="180" width="272" height="319"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vuB-3o-JNh"/>
+                    </constraints>
                     <attributedString key="attributedText">
                         <fragment>
                             <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -94,6 +97,7 @@
                 <constraint firstAttribute="bottom" secondItem="5qd-zy-MPL" secondAttribute="bottom" constant="20" id="63w-AC-Glg"/>
                 <constraint firstAttribute="bottom" secondItem="u2P-MD-zw8" secondAttribute="bottom" constant="18" id="65P-to-K3i"/>
                 <constraint firstItem="GkO-Kd-8UB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="6Tj-82-z1x"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A9y-jj-drj" secondAttribute="trailing" constant="8" id="7qS-un-zQV"/>
                 <constraint firstItem="RvV-k6-Qav" firstAttribute="centerY" secondItem="u2P-MD-zw8" secondAttribute="centerY" id="8Dz-gr-ufE"/>
                 <constraint firstAttribute="trailing" secondItem="v3p-OH-e76" secondAttribute="trailing" constant="16" id="Ayd-um-0eS"/>
                 <constraint firstAttribute="bottom" secondItem="147-hd-llO" secondAttribute="bottom" constant="20" id="DdI-KX-q7R"/>
@@ -101,6 +105,7 @@
                 <constraint firstItem="v3p-OH-e76" firstAttribute="centerX" secondItem="A9y-jj-drj" secondAttribute="centerX" id="HO2-fZ-9Bg"/>
                 <constraint firstItem="x0o-1N-jbH" firstAttribute="leading" secondItem="GkO-Kd-8UB" secondAttribute="leading" constant="8" id="MA0-Yp-GN3"/>
                 <constraint firstAttribute="bottom" secondItem="OCl-N3-g7Z" secondAttribute="bottom" id="QGf-rk-ibG"/>
+                <constraint firstItem="A9y-jj-drj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="QbV-Rz-Yfx"/>
                 <constraint firstItem="x0o-1N-jbH" firstAttribute="bottom" secondItem="GkO-Kd-8UB" secondAttribute="bottom" constant="-8" id="Sd9-5c-qjH"/>
                 <constraint firstItem="u2P-MD-zw8" firstAttribute="top" secondItem="GkO-Kd-8UB" secondAttribute="bottom" constant="13" id="TPQ-NO-oQc"/>
                 <constraint firstItem="A9y-jj-drj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xxd-80-mq3"/>
