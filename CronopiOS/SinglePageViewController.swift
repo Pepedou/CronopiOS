@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import AudioToolbox
 
 
 class SinglePageViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var bookPage: BookPage!
+    var isKeyboardVisible: Bool = false
     
     private var pageImageView: UIImageView!
     private var saveIconView: UIImageView!
     private var cloudIconView: UIImageView!
     private var overlayImage: UIImage!
+    private var muteIconView: UIImageView!
     private var content: UITextView!
     private var activityIndicator: UIActivityIndicatorView!
     
-    private var isKeyboardVisible: Bool = false
     private var keyboardAnimationDuration: NSNumber!
     private var keyboardHeight: CGFloat!
     
@@ -46,24 +48,35 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
                     imageView.image = bookPage?.pageImage
                     overlayImage = imageView.image
                     self.pageImageView = imageView
+                    break
                 case 1:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.savePage))
                     singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     self.cloudIconView = imageView
+                    break
                 case 2:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.saveImageToDevice))
                     singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     self.saveIconView = imageView
+                    break
                 case 3:
-                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.refreshBook))
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onRefreshIconTap))
                     singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
+                    break
                 case 4:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.backgroundTap))
                     singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
+                    break
+                case 5:
+                    let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onMuteIconTap))
+                    singleTap.numberOfTapsRequired = 1
+                    imageView.addGestureRecognizer(singleTap)
+                    self.muteIconView = imageView
+                    break
                 default:
                     continue
                 }
@@ -87,54 +100,69 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         self.bookPage.pageImage = self.pageImageView.image!
     }
     
+    func onRefreshIconTap() {
+        if self.isKeyboardVisible {
+            self.onEditingEnd()
+        }
+        else {
+            self.refreshBook()
+        }
+    }
+    
     func refreshBook() {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
         (self.parent as? PagesViewController)?.refreshBook()
     }
     
     func onImageTap() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        
         if self.isKeyboardVisible == false {
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePicker.sourceType = .camera
-                imagePicker.cameraCaptureMode = .photo
-                imagePicker.cameraDevice = .rear
-                
-                let screenSize = UIScreen.main.bounds.size
-                let cameraAspectRatio = CGFloat(4.0 / 3.0)
-                let imageHeight = CGFloat(screenSize.width * cameraAspectRatio)
-                var verticalAdjustment = CGFloat()
-                
-                if (screenSize.height - imageHeight > 54.0) {
-                    verticalAdjustment = CGFloat((screenSize.height - imageHeight) / 2.0)
-                    verticalAdjustment /= CGFloat(2.0);
-                    verticalAdjustment += CGFloat(2.0)
-                }
-                
-                let cameraFrame = imagePicker.view.frame
-                let cameraOrigin = imagePicker.view.frame.origin
-                
-                let overlayView = OverlayView(frame: CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight))
-                
-                if (self.overlayImage != nil) {
-                    overlayView.setImage(image: self.overlayImage!)
-                }
-                
-                imagePicker.cameraOverlayView = overlayView
-                
-                present(imagePicker, animated: true, completion: nil)
-            }
-            else {
-                let alert = UIAlertController(title: "¡Ups!", message: "El dispositivo no cuenta con cámara.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
-            }
+            self.openCamera()
         }
         else {
             self.onEditingEnd()
         }
+    }
+    
+    func openCamera() {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
         
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.cameraDevice = .rear
+            
+            let screenSize = UIScreen.main.bounds.size
+            let cameraAspectRatio = CGFloat(4.0 / 3.0)
+            let imageHeight = CGFloat(screenSize.width * cameraAspectRatio)
+            var verticalAdjustment = CGFloat()
+            
+            if (screenSize.height - imageHeight > 54.0) {
+                verticalAdjustment = CGFloat((screenSize.height - imageHeight) / 2.0)
+                verticalAdjustment /= CGFloat(2.0);
+                verticalAdjustment += CGFloat(2.0)
+            }
+            
+            let cameraFrame = imagePicker.view.frame
+            let cameraOrigin = imagePicker.view.frame.origin
+            
+            let overlayView = OverlayView(frame: CGRect(x: cameraOrigin.x, y: cameraOrigin.y + verticalAdjustment, width: cameraFrame.width / 2.0, height: imageHeight))
+            
+            if (self.overlayImage != nil) {
+                overlayView.setImage(image: self.overlayImage!)
+            }
+            
+            imagePicker.cameraOverlayView = overlayView
+            
+            present(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "¡Ups!", message: "El dispositivo no cuenta con cámara.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func onEditingEnd() {
@@ -248,6 +276,7 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     
     func savePage() {
         if self.isKeyboardVisible == false {
+            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
             self.bookPage.pageContent = self.content.text
             self.bookPage.pageImage = self.pageImageView.image!
             self.updateRemoteBookPage()
@@ -259,7 +288,6 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     
     func updateRemoteBookPage() {
         let bookUpdater = BookPageUpdater()
-        
         self.activityIndicator.startAnimating()
         
         bookUpdater.updateBookPage(bookPage: self.bookPage, completion: {(success: Bool) -> Void in
@@ -282,7 +310,8 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     
     func saveImageToDevice() {
         if self.isKeyboardVisible == false {
-        UIImageWriteToSavedPhotosAlbum(self.pageImageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+            UIImageWriteToSavedPhotosAlbum(self.pageImageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
         else {
             self.onEditingEnd()
@@ -311,6 +340,21 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         if self.isKeyboardVisible {
             self.onEditingEnd()
         }
+    }
+    
+    func onMuteIconTap() {
+        if self.isKeyboardVisible {
+            self.onEditingEnd()
+        }
+        else {
+            self.toggleBackgroundMusic()
+        }
+    }
+    
+    func toggleBackgroundMusic() {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+        self.muteIconView.isHighlighted = !self.muteIconView.isHighlighted
+        (self.parent as? PagesViewController)?.toggleAudio()
     }
 }
 

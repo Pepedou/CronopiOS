@@ -42,7 +42,8 @@ class PagesViewController: UIPageViewController {
         
         bookDownloader.downloadBook(onPageDownload: {(pageNumber: Int, numberOfPages: Int) -> Void in
             DispatchQueue.main.async {
-                bookCoverVC.progressView.progress = Float(pageNumber) / Float(numberOfPages)
+                let progress = Float(pageNumber) / Float(numberOfPages)
+                bookCoverVC.progressView.progress = progress
             }
         }, completion: {(bookPages: [BookPage]) -> Void in
             self.bookPages = bookPages
