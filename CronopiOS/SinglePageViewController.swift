@@ -299,14 +299,14 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
                 self.activityIndicator.stopAnimating()
 
                 if success {
-                    let alert = UIAlertController(title: "¡Éxito!", message: "Página almacenada en el servidor.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "¡A todo dar, mano!", style: .default, handler: nil))
+                    let alert = UIAlertController(title: "¡Gracias!", message: "Has ayudado a que la mitad de la página faltante regrese al libro.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "¡Estupendo!", style: .default, handler: nil))
                     
                     self.present(alert, animated: true, completion: nil)
                 }
                 else {
-                    let alert = UIAlertController(title: "Error", message: "No se pudo sincronizar la página en el servidor. Intenta nuevamente.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Rayos...", style: .default, handler: nil))
+                    let alert = UIAlertController(title: "¡Por los mil cronopios!", message: "No se pudo reconstruir la página en el libro del fama. Acércate a una fuente de magia antigua más poderosa e intenta de nuevo.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "¡Lo haré!", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             })
@@ -333,7 +333,7 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             return
         }
         
-        let alert = UIAlertController(title: "¡Éxito!", message: "Imagen guardada en la biblioteca.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "¡Fantástico!", message: "Imagen guardada en el dispositivo de esta dimensión.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "¡Genial!", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
         self.saveIconView.isUserInteractionEnabled = false

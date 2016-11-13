@@ -92,15 +92,61 @@
                                 <rect key="frame" x="29" y="101" width="262" height="434"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                                        <mutableString key="content">Unos cronopios, verdes y húmedos, jugaban y bailaban con las esperanzas el baile de la espera. Habían sido invitados por un fama a su elegante casa, en donde los había ubicado en la biblioteca mientras salía por té y galletas. Al centro de la biblioteca, se erguía un llamativo atril sobre el que descansaba un libro intrigante. Guiado por su curiosidad incesante, el cronopio más cronopiento se acercó al libro. Sobre la portada, se leía una advertencia: “Por favor, no abrir.” El cronopio lo abrió.
 
-Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.
-
-Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac</string>
+Sin embargo, cuando apenas comenzaba la historia, el fama regresó de su moderada ausencia. En su angustia por no ser reprendido, el cronopio trató de cerrar el libro pero, por la naturaleza húmeda y viscosa de sus dedos, ¡partió todas las hojas del libro y dejó sólo la primera mitad de cada una! Desconsolado, el cronopio se acercó al inadvertido fama para pedir perdón pero fue interceptado por una esperanza. Ésta le dijo: “Tranquilo, vi lo que sucedió y puedo ayudarte. Este libro describe una leyenda de otra dimensión. Una dimensión en donde los perros ladran y las gallinas cacarean. Un lugar extraño. Afortunadamente, yo tengo acceso a esta dimensión a causa de una divertida anécdota que involucra una caja.” Aliviado, el cronopio acompañó a su salvadora a un cuarto anexo a la biblioteca y se sentaron alrededor de un viejo baúl. La esperanza le explicó al cronopio que iba a utilizar magia antigua para conectar las dos dimensiones y contactar a la protagonista de la historia. Con su ayuda, ¡podrían recuperar los fragmentos faltantes y remendar el daño!
+</mutableString>
                                         <attributes>
-                                            <color key="NSBackgroundColor" red="0.99285586389931957" green="1" blue="0.94771684653267474" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="20" name="NEOTERIC"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="16" name="NEOTERIC"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="16" name="NEOTERIC"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <mutableString key="content">Ante la mirada confundida del cronopio, la esperanza continuó explicándole cómo haría esto. Enviaría a la otra dimensión la primera mitad de cada una de las páginas del libro con los fragmentos que quedaron intactos. La protagonista las recibirá y podrá agregar los fragmentos faltantes. Para las imágenes, deberá presionar sobre las mismas y completar el cuadro. Para el texto, hará lo mismo pero con las palabras faltantes. Utilizando el botón de la nube, sincronizará las dos dimensiones. Y si desea conservar la imagen para sí, presionará el botón del disquete. 
+</mutableString>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="16" name="NEOTERIC"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="16" name="NEOTERIC"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">El cronopio, emocionado, le agradeció a la esperanza por su ayuda y juntos iniciaron el ritual mágico para enviar las páginas. Una vez terminado, aguardaron la respuesta de la otra dimensión…</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="16" name="NEOTERIC"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                 </attributedString>

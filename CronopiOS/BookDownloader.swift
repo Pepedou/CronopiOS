@@ -36,16 +36,16 @@ class BookDownloader
         
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest) { (data, response, error) -> Void in
-            let httpResponse = response as! HTTPURLResponse
-            let statusCode = httpResponse.statusCode
+            let httpResponse = response as? HTTPURLResponse
+            let statusCode = httpResponse?.statusCode
             
             if (statusCode == 200) {
                 self.parseJSONResult(data: data)
             }
             else {
                 print("Failed downloading book. Status code: \(statusCode)")
-                onBookDownloadFailure("No se pudo descargar el libro. Intenta cerrando completamente " +
-                    "la aplicación y asegúrate de tener una buena conexión a internet. Vamos a reintentar... (\(statusCode))")
+                onBookDownloadFailure("No se pudo obtener el libro de la otra dimensión. Intenta cerrando completamente " +
+                    "la aplicación y asegúrate de tener una buena conexión a la magia antigua. Vamos a reintentar... (\(statusCode))")
             }
         }
         
@@ -73,7 +73,7 @@ class BookDownloader
         }
         catch {
             print("Error with Json: \(error)")
-            self.onBookDownloadFailure("No se pudo descargar el libro. Intentaremos de nuevo... (\(error))")
+            self.onBookDownloadFailure("No se pudieron descargar las páginas de la otra dimensión. Intentaremos de nuevo... (\(error))")
         }
     }
 

@@ -47,9 +47,9 @@ class PagesViewController: UIPageViewController {
             }
         }, onPageDownloadFailure: {(pageNumber: Int, numberOfPages: Int) -> Void in
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "¡Oh vaya!", message: "No se pudo descargar la página " +
-                    "\(pageNumber + 1) de \(numberOfPages). Intenta cerrando la aplicación y verifica " +
-                "que tengas una buena conexión a internet. Vamos a reintentar...", preferredStyle: .alert)
+                let alert = UIAlertController(title: "¡Por los mil cronopios!", message: "No se pudo obtener la página " +
+                    "\(pageNumber + 1) de \(numberOfPages) de la otra dimensión. Intenta cerrando la aplicación y verifica " +
+                "que tengas una buena conexión a la magia antigua. Vamos a reintentar...", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Entiendo", style: .default, handler: {(action: UIAlertAction) -> Void in
                     self.refreshBook()
                 }))
@@ -65,7 +65,7 @@ class PagesViewController: UIPageViewController {
             }
         }, onBookDownloadFailure: {(message: String) -> Void in
             DispatchQueue.main.async {
-            let alert = UIAlertController(title: "¡Oh rayos!", message: message, preferredStyle: .alert)
+            let alert = UIAlertController(title: "¡Santos cronopios!", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Entiendo", style: .default, handler: {(action: UIAlertAction) -> Void in
                     self.refreshBook()
                 }))
