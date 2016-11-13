@@ -14,16 +14,23 @@ class BookDownloader
     private let AUTH_VALUE = "Token 65df8fa95b9001381d8c8ea46db8c793c9bff231"
     private var pagesCount = 0
     private var completion: ((_ bookPages: [BookPage]) -> Void)!
+    private var onBookDownloadFailure: ((_ message: String) -> Void)!
     private var onPageDownload: ((_ pageNumber: Int, _ numberOfPages: Int) -> Void)!
+    private var onPageDownloadFailure: ((_ pageNumber: Int, _ numberOfPages: Int) -> Void)!
     
     var bookPages: [BookPage] = []
     
-    func downloadBook(onPageDownload: @escaping (_ pageNumber: Int, _ numberOfPages: Int) -> Void, completion: @escaping (_ bookPages: [BookPage]) -> Void) {
+    func downloadBook(onPageDownload: @escaping (_ pageNumber: Int, _ numberOfPages: Int) -> Void,
+                      onPageDownloadFailure: @escaping(_ pageNumber: Int, _ numberOfPages: Int) -> Void,
+                      completion: @escaping (_ bookPages: [BookPage]) -> Void,
+                      onBookDownloadFailure: @escaping(_ message: String) -> Void) {
         let requestURL = URL(string: BOOK_PAGES_API_URL)!
         var urlRequest = URLRequest(url: requestURL)
         
         self.completion = completion
         self.onPageDownload = onPageDownload
+        self.onPageDownloadFailure = onPageDownloadFailure
+        self.onBookDownloadFailure = onBookDownloadFailure
         
         urlRequest.addValue(AUTH_VALUE, forHTTPHeaderField: "Authorization")
         
@@ -35,6 +42,11 @@ class BookDownloader
             if (statusCode == 200) {
                 self.parseJSONResult(data: data)
             }
+            else {
+                print("Failed downloading book. Status code: \(statusCode)")
+                onBookDownloadFailure("No se pudo descargar el libro. Intenta cerrando completamente " +
+                    "la aplicación y asegúrate de tener una buena conexión a internet. Vamos a reintentar... (\(statusCode))")
+            }
         }
         
         task.resume()
@@ -43,7 +55,6 @@ class BookDownloader
     private func parseJSONResult(data: Data?) {
         do{
             let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String:Any]
-            
             self.pagesCount = json["count"] as! Int
             
             if let results = json["results"] as? [[String:Any]] {
@@ -62,6 +73,7 @@ class BookDownloader
         }
         catch {
             print("Error with Json: \(error)")
+            self.onBookDownloadFailure("No se pudo descargar el libro. Intentaremos de nuevo... (\(error))")
         }
     }
 
@@ -76,20 +88,27 @@ class BookDownloader
         print("Book page \(forPageIndex) download started")
         getDataFromUrl(url: url) { (data, response, error)  in
             guard let data = data, error == nil else { return }
+            let httpResponse = response as? HTTPURLResponse
             
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Book page \(forPageIndex) download finished")
-            
-            self.bookPages[forPageIndex].pageImage = UIImage(data: data)!
-            
-            let numDownloadedImages = self.bookPages.filter({($0.pageImage != nil)}).count
-            
-            let isBookDownloadFinished = (numDownloadedImages == self.pagesCount)
-            
-            self.onPageDownload(numDownloadedImages, self.pagesCount)
-            
-            if isBookDownloadFinished {
-                self.completion(self.bookPages)
+            if httpResponse?.statusCode == 200 {
+                print(response?.suggestedFilename ?? url.lastPathComponent)
+                print("Book page \(forPageIndex) download finished")
+                
+                self.bookPages[forPageIndex].pageImage = UIImage(data: data)!
+                
+                let numDownloadedImages = self.bookPages.filter({($0.pageImage != nil)}).count
+                
+                let isBookDownloadFinished = (numDownloadedImages == self.pagesCount)
+                
+                self.onPageDownload(numDownloadedImages, self.pagesCount)
+                
+                if isBookDownloadFinished {
+                    self.completion(self.bookPages)
+                }
+            }
+            else {
+                print("Failed to download image \(forPageIndex) with status code \(httpResponse?.statusCode)")
+                self.onPageDownloadFailure(forPageIndex, self.pagesCount)
             }
         }
     }

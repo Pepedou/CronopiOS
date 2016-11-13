@@ -45,13 +45,31 @@ class PagesViewController: UIPageViewController {
                 let progress = Float(pageNumber) / Float(numberOfPages)
                 bookCoverVC.progressView.progress = progress
             }
+        }, onPageDownloadFailure: {(pageNumber: Int, numberOfPages: Int) -> Void in
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "¡Oh vaya!", message: "No se pudo descargar la página " +
+                    "\(pageNumber + 1) de \(numberOfPages). Intenta cerrando la aplicación y verifica " +
+                "que tengas una buena conexión a internet. Vamos a reintentar...", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Entiendo", style: .default, handler: {(action: UIAlertAction) -> Void in
+                    self.refreshBook()
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
         }, completion: {(bookPages: [BookPage]) -> Void in
             self.bookPages = bookPages
-            self.audioPlayer?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   .setVolume(0.1, fadeDuration: 3)
+            self.audioPlayer?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   .setVolume(0.25, fadeDuration: 3)
             
             DispatchQueue.main.async() { () -> Void in
                 let prologueVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrologueViewController")
                 self.setViewControllers([prologueVC], direction: .forward, animated: true, completion: nil)
+            }
+        }, onBookDownloadFailure: {(message: String) -> Void in
+            DispatchQueue.main.async {
+            let alert = UIAlertController(title: "¡Oh rayos!", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Entiendo", style: .default, handler: {(action: UIAlertAction) -> Void in
+                    self.refreshBook()
+                }))
+            self.present(alert, animated: true, completion: nil)
             }
         })
         

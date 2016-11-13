@@ -296,11 +296,12 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         
         bookUpdater.updateBookPage(bookPage: self.bookPage, completion: {(success: Bool) -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
+                self.activityIndicator.stopAnimating()
+
                 if success {
                     let alert = UIAlertController(title: "¡Éxito!", message: "Página almacenada en el servidor.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "¡A todo dar, mano!", style: .default, handler: nil))
                     
-                    self.activityIndicator.stopAnimating()
                     self.present(alert, animated: true, completion: nil)
                 }
                 else {

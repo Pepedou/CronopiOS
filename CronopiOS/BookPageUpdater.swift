@@ -48,6 +48,7 @@ class BookPageUpdater {
                 completion(true)
             }
             else {
+                print("Unable to update book page \(page.pageNumber) with status code \(statusCode).")
                 completion(false)
             }
         }
