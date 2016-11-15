@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9y-jj-drj">
-                    <rect key="frame" x="129" y="40" width="63.5" height="32"/>
+                    <rect key="frame" x="128" y="40" width="64" height="32"/>
                     <attributedString key="attributedText">
                         <fragment content="Title">
                             <attributes>
@@ -31,20 +31,20 @@
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="v3p-OH-e76">
-                    <rect key="frame" x="16" y="80" width="288" height="333"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="v3p-OH-e76">
+                    <rect key="frame" x="16" y="80" width="288" height="298"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="333" id="qS9-95-8Al"/>
                     </constraints>
                 </imageView>
                 <imageView opaque="NO" userInteractionEnabled="NO" tag="-2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GkO-Kd-8UB">
-                    <rect key="frame" x="16" y="426" width="288" height="81"/>
+                    <rect key="frame" x="16" y="391" width="288" height="116"/>
                     <color key="backgroundColor" red="0.91372549020000005" green="0.92156862750000001" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0o-1N-jbH" userLabel="ContentTextView">
-                    <rect key="frame" x="24" y="434" width="272" height="65"/>
+                    <rect key="frame" x="24" y="399" width="272" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vuB-3o-JNh"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="vuB-3o-JNh"/>
                     </constraints>
                     <attributedString key="attributedText">
                         <fragment>
