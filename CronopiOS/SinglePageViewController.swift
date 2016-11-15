@@ -146,7 +146,7 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
             if (screenSize.height - imageHeight > 54.0) {
                 verticalAdjustment = CGFloat((screenSize.height - imageHeight) / 2.0)
                 verticalAdjustment /= CGFloat(2.0);
-                verticalAdjustment += CGFloat(2.0)
+                verticalAdjustment += CGFloat(4.0)
             }
             
             let cameraFrame = imagePicker.view.frame

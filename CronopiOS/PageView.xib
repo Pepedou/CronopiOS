@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9y-jj-drj">
-                    <rect key="frame" x="128.5" y="40" width="63.5" height="32"/>
+                    <rect key="frame" x="129" y="40" width="63.5" height="32"/>
                     <attributedString key="attributedText">
                         <fragment content="Title">
                             <attributes>
@@ -32,17 +32,17 @@
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="v3p-OH-e76">
-                    <rect key="frame" x="16" y="80" width="288" height="79"/>
+                    <rect key="frame" x="16" y="80" width="288" height="333"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="333" id="qS9-95-8Al"/>
                     </constraints>
                 </imageView>
                 <imageView opaque="NO" userInteractionEnabled="NO" tag="-2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GkO-Kd-8UB">
-                    <rect key="frame" x="16" y="172" width="288" height="335"/>
+                    <rect key="frame" x="16" y="426" width="288" height="81"/>
                     <color key="backgroundColor" red="0.91372549020000005" green="0.92156862750000001" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0o-1N-jbH" userLabel="ContentTextView">
-                    <rect key="frame" x="24" y="180" width="272" height="319"/>
+                    <rect key="frame" x="24" y="434" width="272" height="65"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vuB-3o-JNh"/>
                     </constraints>
@@ -131,7 +131,7 @@
         <image name="Cloud" width="16" height="16"/>
         <image name="Mute" width="16" height="16"/>
         <image name="PageBackground" width="320" height="568"/>
-        <image name="Placeholder" width="101" height="79"/>
+        <image name="Placeholder" width="750" height="750"/>
         <image name="Refresh" width="16" height="16"/>
         <image name="Save" width="16" height="16"/>
         <image name="Unmute" width="16" height="16"/>
