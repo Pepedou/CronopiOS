@@ -21,6 +21,7 @@
 		B465A1241DD6C000001CD4A6 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */; };
 		B47898221DD6A08B001782D4 /* NEOTERIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47898211DD6A08B001782D4 /* NEOTERIC.ttf */; };
 		B47898241DD6A1AA001782D4 /* BookCoverLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */; };
+		B4A5842B1DDB8B51004D1488 /* DeviceTokenRegistrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5842A1DDB8B51004D1488 /* DeviceTokenRegistrator.swift */; };
 		B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */; };
 		B4A8DA461DD0FC6D00EF88B0 /* BookPageUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */; };
 		B4D2493E1DCBABD40020E105 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2493D1DCBABD40020E105 /* OverlayView.xib */; };
@@ -64,8 +65,10 @@
 		B43ECDF61DCD9AAF006D3CD2 /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
 		B458AB6A1DD6DC51000D617D /* BookPrologueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPrologueViewController.swift; sourceTree = "<group>"; };
 		B465A1231DD6C000001CD4A6 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
+		B47165CB1DDA9D0300392ED6 /* CronopiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CronopiOS.entitlements; sourceTree = "<group>"; };
 		B47898211DD6A08B001782D4 /* NEOTERIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NEOTERIC.ttf; sourceTree = "<group>"; };
 		B47898231DD6A1AA001782D4 /* BookCoverLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookCoverLaunchScreen.png; sourceTree = "<group>"; };
+		B4A5842A1DDB8B51004D1488 /* DeviceTokenRegistrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTokenRegistrator.swift; sourceTree = "<group>"; };
 		B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDownloader.swift; sourceTree = "<group>"; };
 		B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageUpdater.swift; sourceTree = "<group>"; };
 		B4D2493D1DCBABD40020E105 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 				B42297361DC9845C002FD0AE /* AppDelegate.swift */,
 				B422973D1DC9845C002FD0AE /* Assets.xcassets */,
 				B42297421DC9845C002FD0AE /* Info.plist */,
+				B47165CB1DDA9D0300392ED6 /* CronopiOS.entitlements */,
 			);
 			path = CronopiOS;
 			sourceTree = "<group>";
@@ -205,6 +209,7 @@
 			children = (
 				B4A8DA431DD00BAA00EF88B0 /* BookDownloader.swift */,
 				B4A8DA451DD0FC6D00EF88B0 /* BookPageUpdater.swift */,
+				B4A5842A1DDB8B51004D1488 /* DeviceTokenRegistrator.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -279,6 +284,14 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = UFT4YM3Y7F;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					B42297461DC9845C002FD0AE = {
 						CreatedOnToolsVersion = 8.1;
@@ -359,6 +372,7 @@
 				B458AB6B1DD6DC51000D617D /* BookPrologueViewController.swift in Sources */,
 				B4A8DA441DD00BAA00EF88B0 /* BookDownloader.swift in Sources */,
 				B42297371DC9845C002FD0AE /* AppDelegate.swift in Sources */,
+				B4A5842B1DDB8B51004D1488 /* DeviceTokenRegistrator.swift in Sources */,
 				B4247B6B1DCD6629008CD33C /* PagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CronopiOS/CronopiOS.entitlements;
 				DEVELOPMENT_TEAM = UFT4YM3Y7F;
 				INFOPLIST_FILE = CronopiOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -523,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CronopiOS/CronopiOS.entitlements;
 				DEVELOPMENT_TEAM = UFT4YM3Y7F;
 				INFOPLIST_FILE = CronopiOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
