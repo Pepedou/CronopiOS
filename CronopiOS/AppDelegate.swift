@@ -16,13 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window?.tintColor = themeColor
+        application.applicationIconBadgeNumber = 0
         
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in }
-        application.registerForRemoteNotifications()
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            if (granted) {
+                application.registerForRemoteNotifications()
+            }
+            else {
+                print("Application hasn't been authorized for remote notifications.")
+            }
+        }
+
         return true
     }
 
@@ -67,7 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("Failed registering for remote notifications. \(error)")
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        if let pagesVC = self.window?.rootViewController as? PagesViewController {
+            pagesVC.refreshBook()
+        }
     }
 }
 

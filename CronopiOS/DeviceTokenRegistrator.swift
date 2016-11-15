@@ -24,6 +24,9 @@ class DeviceTokenRegistrator {
             if (httpResponse?.statusCode == 200) {
                 print("Successfully registered device token \(token).")
             }
+            else if (httpResponse?.statusCode == 400) {
+                print("Device token already registered.")
+            }
             else {
                 print("Failed to register device token \(httpResponse?.statusCode).")
             }

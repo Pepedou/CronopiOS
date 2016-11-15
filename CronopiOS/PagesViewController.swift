@@ -36,6 +36,8 @@ class PagesViewController: UIPageViewController {
     }
     
     func refreshBook() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         let bookDownloader = BookDownloader()
         let bookCoverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookCoverViewController") as! BookCoverViewController
         self.audioPlayer?.setVolume(1.0, fadeDuration: 3)
