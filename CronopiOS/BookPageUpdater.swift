@@ -10,7 +10,7 @@ import UIKit
 
 class BookPageUpdater {
     private let BOOK_PAGES_API_URL = "https://famas.herokuapp.com/book_pages/"
-    private let AUTH_VALUE = "Token 65df8fa95b9001381d8c8ea46db8c793c9bff231"
+    private let AUTH_VALUE = "Token df66fe76ff339fc4c4d69baab4454d34d2a5ac05"
 
     func updateBookPage(bookPage page: BookPage, completion: @escaping (_ success: Bool) -> Void) {
         let requestURL = URL(string: BOOK_PAGES_API_URL.appending(String(page.pageId)).appending("/"))!

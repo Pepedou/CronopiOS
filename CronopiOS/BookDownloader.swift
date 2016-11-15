@@ -11,7 +11,7 @@ import UIKit
 class BookDownloader
 {
     private let BOOK_PAGES_API_URL = "https://famas.herokuapp.com/book_pages/"
-    private let AUTH_VALUE = "Token 65df8fa95b9001381d8c8ea46db8c793c9bff231"
+    private let AUTH_VALUE = "Token df66fe76ff339fc4c4d69baab4454d34d2a5ac05"
     private var pagesCount = 0
     private var completion: ((_ bookPages: [BookPage]) -> Void)!
     private var onBookDownloadFailure: ((_ message: String) -> Void)!
