@@ -10,7 +10,7 @@ import UIKit
 
 class BookPageUpdater {
     private let BOOK_PAGES_API_URL = "https://famas.herokuapp.com/book_pages/"
-    private let AUTH_VALUE = "Token df66fe76ff339fc4c4d69baab4454d34d2a5ac05"
+    private let AUTH_VALUE = "Token eeb76d214b73e78cb56fb5ebd38ee1436a342766"
 
     func updateBookPage(bookPage page: BookPage, completion: @escaping (_ success: Bool) -> Void) {
         let requestURL = URL(string: BOOK_PAGES_API_URL.appending(String(page.pageId)).appending("/"))!
@@ -35,7 +35,7 @@ class BookPageUpdater {
         
         let imageData = UIImageJPEGRepresentation(page.pageImage!, 1)!
         
-        urlRequest.httpBody = createBodyWithParameters(parameters: params, filePathKey: "image", fileName: page.pageTitle, imageDataKey: imageData as NSData, boundary: boundary) as Data
+        urlRequest.httpBody = createBodyWithParameters(parameters: params, filePathKey: "image", fileName: "img_page_\(page.pageNumber)", imageDataKey: imageData as NSData, boundary: boundary) as Data
         
         print(String(describing: urlRequest.httpBody!.description))
         
