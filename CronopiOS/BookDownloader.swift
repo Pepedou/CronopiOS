@@ -57,6 +57,11 @@ class BookDownloader
             let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String:Any]
             self.pagesCount = json["count"] as! Int
             
+            if self.pagesCount == 0 {
+                self.onBookDownloadFailure("Al parecer, el libro no contiene páginas. Qué tristeza...")
+                return
+            }
+            
             if let results = json["results"] as? [[String:Any]] {
                 for result in results {
                     let pageId = result["id"] as? Int
