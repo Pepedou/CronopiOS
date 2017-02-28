@@ -43,44 +43,41 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
                 switch imageView.tag {
                 case 0:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onImageTap))
-                    singleTap.numberOfTapsRequired = 1
+                    let touchHold = UILongPressGestureRecognizer(target: self, action: #selector(SinglePageViewController.onImageHold))
+                    
                     imageView.addGestureRecognizer(singleTap)
+                    imageView.addGestureRecognizer(touchHold)
                     imageView.image = bookPage?.pageImage
+          
                     overlayImage = imageView.image
                     self.pageImageView = imageView
                     break
                 case 1:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.savePage))
-                    singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     self.cloudIconView = imageView
                     break
                 case 2:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.saveImageToDevice))
-                    singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     self.saveIconView = imageView
                     break
                 case 3:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onRefreshIconTap))
-                    singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     break
                 case 4:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.backgroundTap))
-                    singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     break
                 case 5:
                     let singleTap = UITapGestureRecognizer(target: self, action: #selector(SinglePageViewController.onMuteIconTap))
-                    singleTap.numberOfTapsRequired = 1
                     imageView.addGestureRecognizer(singleTap)
                     self.muteIconView = imageView
                     break
                 default:
                     continue
                 }
-
             }
             else if subview.isKind(of: UITextView.self) {
                 let contentLabel = (subview as! UITextView)
@@ -121,6 +118,15 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     func onImageTap() {
         if self.isKeyboardVisible == false {
             self.openCamera()
+        }
+        else {
+            self.onEditingEnd()
+        }
+    }
+    
+    func onImageHold() {
+        if self.isKeyboardVisible == false {
+            self.openGallery()
         }
         else {
             self.onEditingEnd()
@@ -169,6 +175,23 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
+    func openGallery() {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePicker.sourceType = .photoLibrary
+            present(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "¡Ups!", message: "No es posible presentar la galería de imágenes en este dispositivo.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ni hablar", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func onEditingEnd() {
         if self.content.text != self.bookPage.pageContent {
             self.saveIconView.isUserInteractionEnabled = true
@@ -212,46 +235,40 @@ class SinglePageViewController: UIViewController, UINavigationControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true, completion: nil)
         
-        if picker.sourceType == .camera
+        var chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        let overlayImage = self.pageImageView.image
+        
+        let targetSize = (chosenImage?.size)!
+        let targetRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width, height: targetSize.height)
+        let overlayRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width / 2.0, height: targetSize.height)
+        
+        let croppedImage = self.cropImage(imageToCrop: overlayImage!, rect: overlayRect, fullRect: targetRect)
+        
+        UIGraphicsBeginImageContext(targetSize)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        UIGraphicsPushContext(context!)
+        
+        let imageIsFromFrontCamera = picker.sourceType == .camera && picker.cameraDevice == .front
+        
+        if imageIsFromFrontCamera
         {
-            var chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-            let overlayImage = self.pageImageView.image
-            
-            let targetSize = (chosenImage?.size)!
-            let targetRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width, height: targetSize.height)
-            let overlayRect = CGRect(x: 0.0, y: 0.0, width: targetSize.width / 2.0, height: targetSize.height)
-            
-            let croppedImage = self.cropImage(imageToCrop: overlayImage!, rect: overlayRect, fullRect: targetRect)
-            
-            UIGraphicsBeginImageContext(targetSize)
-            
-            let context = UIGraphicsGetCurrentContext()
-            
-            UIGraphicsPushContext(context!)
-            
-            if picker.cameraDevice == .front
-            {
-                chosenImage = UIImage(cgImage: (chosenImage?.cgImage)!, scale: 1.0, orientation: .leftMirrored)
-            }
-            
-            chosenImage?.draw(in: targetRect)
-            croppedImage?.draw(in: overlayRect)
-            
-            UIGraphicsPopContext()
-            
-            let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
-            
-            UIGraphicsEndImageContext()
-            
-            self.pageImageView.image = renderedImage
-            self.saveIconView.isUserInteractionEnabled = true
+            chosenImage = UIImage(cgImage: (chosenImage?.cgImage)!, scale: 1.0, orientation: .leftMirrored)
         }
-        else
-        {
-            self.overlayImage = info[UIImagePickerControllerEditedImage] as? UIImage
-            self.pageImageView.image = self.overlayImage
-            self.saveIconView.isUserInteractionEnabled = false
-        }
+        
+        chosenImage?.draw(in: targetRect)
+        croppedImage?.draw(in: overlayRect)
+        
+        UIGraphicsPopContext()
+        
+        let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        self.pageImageView.image = renderedImage
+        self.saveIconView.isUserInteractionEnabled = true
         
         dismiss(animated: true, completion: nil)
     }
